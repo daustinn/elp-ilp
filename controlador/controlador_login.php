@@ -25,8 +25,13 @@ function handleLoginForm()
             $result = $conexion->query($query);
 
             if ($result && $result->num_rows > 0) {
-                // Valid credentials, initiate session
-                $_SESSION['usuario'] = $usuario;
+                // Valid credentials, initiate session and store additional user information
+                $row = $result->fetch_assoc();
+                $_SESSION['id'] = $row['idusuario'];
+                $_SESSION['nombre'] = $row['nombre'];
+                $_SESSION['apellido'] = $row['apellido'];
+                $_SESSION['usuario'] = $row['usuario'];
+                $_SESSION['rol'] = $row['tipo_acceso_idtipo_acceso'];
                 $_SESSION['loggedin'] = true;
 
                 // Redirect the user to the index.php page
