@@ -1,4 +1,5 @@
 <?php
+session_start();
 $username = $_SESSION['nombre'];
 $lastname = $_SESSION['apellido'];
 ?>
@@ -31,7 +32,7 @@ $lastname = $_SESSION['apellido'];
                     </a>
                     <hr class="dropdown-divider" />
                 </li>
-                <li><a class="dropdown-item" href="login.php">Cerrar sesion</a></li>
+                <li><a class="dropdown-item" href="libs/logout.php">Cerrar sesion</a></li>
             </ul>
         </li>
     </ul>
