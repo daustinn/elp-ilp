@@ -8,10 +8,10 @@
 
 function connectToDatabase()
 {
-     $host = 'containers-us-west-205.railway.app';
-     $port = '7306';
+     $host = 'containers-us-west-108.railway.app';
+     $port = '6636';
      $username = 'root';
-     $password = 'JJ4CKokY9mxaedRGfuLt';
+     $password = '81YTQQn9iz4OkZxOKRbU';
      $database = 'railway';
 
      try {
