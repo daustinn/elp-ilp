@@ -15,23 +15,21 @@ function handleLoginForm()
 {
     if (isset($_POST['btningresar'])) {
         $usuario = $_POST['usuario'];
-        $password = $_POST['password'];
+        $password = $_POST['contraseña'];
         $conexion = connectToDatabase();
 
         if ($conexion) {
             $usuario = $conexion->real_escape_string($usuario);
             $password = $conexion->real_escape_string($password);
-            $query = "SELECT * FROM usuario WHERE usuario = '$usuario' AND password = '$password'";
+            $query = "SELECT * FROM usuario WHERE usuario = '$usuario' AND contraseña = '$password'";
             $result = $conexion->query($query);
 
             if ($result && $result->num_rows > 0) {
                 // Valid credentials, initiate session and store additional user information
                 $row = $result->fetch_assoc();
                 $_SESSION['id'] = $row['idusuario'];
-                $_SESSION['nombre'] = $row['nombre'];
-                $_SESSION['apellido'] = $row['apellido'];
                 $_SESSION['usuario'] = $row['usuario'];
-                $_SESSION['rol'] = $row['tipo_acceso_idtipo_acceso'];
+                $_SESSION['rol'] = $row['idrol'];
                 $_SESSION['loggedin'] = true;
 
                 // Redirect the user to the index.php page

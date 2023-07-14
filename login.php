@@ -44,7 +44,7 @@
                </div>
                <div class="div">
                   <h5>Contraseña</h5>
-                  <input type="password" id="input" class="input" name="password">
+                  <input type="password" id="input" class="input" name="contraseña">
                </div>
             </div>
             <div class="view">
