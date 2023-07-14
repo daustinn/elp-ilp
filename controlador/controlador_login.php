@@ -3,6 +3,8 @@
  * Validates user credentials and initiates a session if login is successful.
  */
 session_start();
+session_start();
+
 
 /**
  * Handles the login form submission.
