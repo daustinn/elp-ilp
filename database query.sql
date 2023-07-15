@@ -1,14 +1,15 @@
 -- DEPARTAMENT TABLE
-CREATE TABLE `departamento` (
+CREATE TABLE IF NOT EXISTS `departamento` (
   `id` int NOT NULL AUTO_INCREMENT,
   `nombre` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
 );
-INSERT INTO `departamento` VALUE (1,'General')
+
+INSERT INTO `departamento` (`id`, `nombre`) VALUES (1, 'General');
 
 
 -- AREA TABLE
-CREATE TABLE `area` (
+CREATE TABLE IF NOT EXISTS `area` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `nombre` varchar(255) DEFAULT NULL,
   `iddepartamento` INT DEFAULT NULL,
@@ -16,22 +17,20 @@ CREATE TABLE `area` (
   KEY `iddepartamento_idx` (`iddepartamento`),
   CONSTRAINT `iddepartamento` FOREIGN KEY (`iddepartamento`) REFERENCES `departamento` (`id`)
 );
-INSERT INTO `departamento` VALUE (1,'Director General', 1)
 
-
+INSERT INTO `area` (`id`, `nombre`, `iddepartamento`) VALUES (1, 'Director General', 1);
 
 
 -- SEDE TABLE
-CREATE TABLE `sede` (
+CREATE TABLE IF NOT EXISTS `sede` (
   `id` int NOT NULL AUTO_INCREMENT,
   `lugar` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
 );
 
 
-
--- puesto TABLE
-CREATE TABLE `puesto` (
+-- PUESTO TABLE
+CREATE TABLE IF NOT EXISTS `puesto` (
   `id` int NOT NULL AUTO_INCREMENT,
   `puesto` INT DEFAULT NULL,
   `tipo_puesto` VARCHAR(255) NULL,
@@ -39,30 +38,24 @@ CREATE TABLE `puesto` (
 );
 
 
-
--- POST TABLE
-CREATE TABLE `cargo` (
+-- CARGO TABLE
+CREATE TABLE IF NOT EXISTS `cargo` (
   `id` int NOT NULL AUTO_INCREMENT,
   `nombre` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
 );
-
-
-
-
 
 
 -- ROL TABLE
-CREATE TABLE `rol` (
+CREATE TABLE IF NOT EXISTS `rol` (
   `id` int NOT NULL AUTO_INCREMENT,
   `nombre` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
 );
 
 
-
 -- USER TABLE
-CREATE TABLE `usuario` (
+CREATE TABLE IF NOT EXISTS `usuario` (
   `id` int NOT NULL AUTO_INCREMENT,
   `usuario` varchar(100) NOT NULL,
   `contraseña` varchar(255) DEFAULT 'Pontificia2023',
@@ -73,10 +66,8 @@ CREATE TABLE `usuario` (
 );
 
 
-
-
 -- COLLABORATOR TABLE
-CREATE TABLE `colaborador` (
+CREATE TABLE IF NOT EXISTS `colaborador` (
   `id` int NOT NULL AUTO_INCREMENT,
   `dni` varchar(8) DEFAULT NULL,
   `nombre` varchar(255) DEFAULT NULL,
@@ -89,8 +80,7 @@ CREATE TABLE `colaborador` (
   KEY `idcargo_idx` (`idcargo`),
   KEY `idusuario_idx` (`idusuario`),
   KEY `idsede_idx` (`idsede`),
-  KEY `idpuestoidx` (`idpuesto`),
-
+  KEY `idpuesto_idx` (`idpuesto`),
   CONSTRAINT `idcargo` FOREIGN KEY (`idcargo`) REFERENCES `cargo` (`id`),
   CONSTRAINT `idsede` FOREIGN KEY (`idsede`) REFERENCES `sede` (`id`),
   CONSTRAINT `idusuario` FOREIGN KEY (`idusuario`) REFERENCES `usuario` (`id`),
@@ -98,9 +88,8 @@ CREATE TABLE `colaborador` (
 );
 
 
-
 -- EMAILS TABLE
-CREATE TABLE `correos` (
+CREATE TABLE IF NOT EXISTS `correos` (
   `id` int NOT NULL AUTO_INCREMENT,
   `tipo_correo` varchar(100) NOT NULL,
   `valor` varchar(255) DEFAULT NULL,
@@ -111,9 +100,8 @@ CREATE TABLE `correos` (
 );
 
 
-
 -- SCORE TYPE TABLE
-CREATE TABLE `tipo_objetivo` (
+CREATE TABLE IF NOT EXISTS `tipo_objetivo` (
   `id` int NOT NULL AUTO_INCREMENT,
   `nombre` varchar(255) DEFAULT NULL,
   `descripcion` varchar(255) DEFAULT NULL,
@@ -121,9 +109,8 @@ CREATE TABLE `tipo_objetivo` (
 );
 
 
-
 -- AIM TABLE
-CREATE TABLE `objetivo` (
+CREATE TABLE IF NOT EXISTS `objetivo` (
   `id` int NOT NULL AUTO_INCREMENT,
   `nombre` varchar(255) DEFAULT NULL,
   `descripcion` varchar(255) DEFAULT NULL,
@@ -140,13 +127,12 @@ CREATE TABLE `objetivo` (
 );
 
 
-
 -- SCORE TABLE
-CREATE TABLE `puntaje` (
+CREATE TABLE IF NOT EXISTS `puntaje` (
   `id` int NOT NULL AUTO_INCREMENT,
   `fecha_inicio` DATETIME DEFAULT NULL,
   `fecha_fin` DATETIME DEFAULT NULL,
-  `estado` int DEFAULT NULL, -- 1: FINALIZADO, 2: PENDIENTE, 3: RECHAZADO
+  `estado` int DEFAULT NULL,
   `valor` DECIMAL(1,1) DEFAULT NULL,
   `valor_inicial` DECIMAL(1,1) DEFAULT NULL,
   `idobjetivo` int DEFAULT NULL,
@@ -156,28 +142,15 @@ CREATE TABLE `puntaje` (
 );
 
 
-
 -- ASSESSMENT TABLE
-CREATE TABLE `evaluacion` (
+CREATE TABLE IF NOT EXISTS `evaluacion` (
   `id` int NOT NULL AUTO_INCREMENT,
   `fecha` DATETIME DEFAULT NULL,
   `idevaluador` int DEFAULT NULL,
   `idpuntaje` int DEFAULT NULL,
   PRIMARY KEY (`id`),
-  KEY `idcolaborador_idx` (`idevaluador`),
+  KEY `idevaluador_idx` (`idevaluador`),
   KEY `idpuntaje_idx` (`idpuntaje`),
   CONSTRAINT `idevaluador` FOREIGN KEY (`idevaluador`) REFERENCES `colaborador` (`id`),
   CONSTRAINT `idpuntaje` FOREIGN KEY (`idpuntaje`) REFERENCES `puntaje` (`id`)
-); 
-
-
-
-
-
-
-
-
-
-
-
-
+);
