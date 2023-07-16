@@ -23,35 +23,7 @@ $lastname = $_SESSION['apellido'];
             <form>
                 <div class="form-group mb-0">
                     <i class="dw dw-search2 search-icon"></i>
-                    <input type="text" class="form-control search-input" placeholder="Search Here" />
-                    <div class="dropdown">
-                        <a class="dropdown-toggle no-arrow" href="#" role="button" data-toggle="dropdown">
-                            <i class="ion-arrow-down-c"></i>
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-right">
-                            <div class="form-group row">
-                                <label class="col-sm-12 col-md-2 col-form-label">From</label>
-                                <div class="col-sm-12 col-md-10">
-                                    <input class="form-control form-control-sm form-control-line" type="text" />
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <label class="col-sm-12 col-md-2 col-form-label">To</label>
-                                <div class="col-sm-12 col-md-10">
-                                    <input class="form-control form-control-sm form-control-line" type="text" />
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <label class="col-sm-12 col-md-2 col-form-label">Subject</label>
-                                <div class="col-sm-12 col-md-10">
-                                    <input class="form-control form-control-sm form-control-line" type="text" />
-                                </div>
-                            </div>
-                            <div class="text-right">
-                                <button class="btn btn-primary">Search</button>
-                            </div>
-                        </div>
-                    </div>
+                    <input type="text" class="form-control search-input" placeholder="Buscar" />
                 </div>
             </form>
         </div>
@@ -147,9 +119,8 @@ $lastname = $_SESSION['apellido'];
                     <span class="user-name"> <?php echo $fullname ?> <?php echo $lastname ?></span>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
-                    <a class="dropdown-item" href="profile.html"><i class="dw dw-user1"></i> Perfil</a>
-                    <a class="dropdown-item" href="profile.html"><i class="dw dw-settings2"></i> Configuración</a>
-                    <a class="dropdown-item" href="faq.html"><i class="dw dw-help"></i> Ayuda</a>
+                    <a class="dropdown-item" href="perfil.php"><i class="dw dw-user1"></i> Perfil</a>
+                    <a class="dropdown-item" href="ayuda.php"><i class="dw dw-help"></i> Ayuda</a>
                     <a class="dropdown-item" href="libs/logout.php"><i class="dw dw-logout"></i> Salir</a>
                 </div>
             </div>
@@ -229,7 +200,7 @@ $lastname = $_SESSION['apellido'];
 
             <div class="reset-options pt-30 text-center">
                 <button class="btn btn-danger" id="reset-settings">
-                Reiniciar ajustes
+                    Reiniciar ajustes
                 </button>
             </div>
         </div>
