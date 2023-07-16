@@ -1,20 +1,3 @@
-<?php
-// Session start
-session_start();
-
-// Verificar si el usuario ha iniciado sesión
-if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
-  // Si no ha iniciado sesión, redireccionar al formulario de inicio de sesión
-  header('Location: login.php');
-  exit();
-}
-
-?>
-
-
-
-
-
 <!-- include component head -->
 <?php include 'components/head-logged-in.php' ?>
 
