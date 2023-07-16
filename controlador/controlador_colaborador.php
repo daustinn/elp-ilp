@@ -24,4 +24,3 @@ function obtenerListaColaboradores()
     }
     return false;
 }
-?>

@@ -268,3 +268,8 @@ INSERT INTO `cargo` VALUES (79,'Mentor');
 INSERT INTO `cargo` VALUES (80,'Operario de Logistica');
 INSERT INTO `cargo` VALUES (81,'Operario de Seguridad');
 INSERT INTO `cargo` VALUES (82,'Operario de Limpieza');
+
+
+INSERT INTO `colaborador` VALUES (1,'70057895','Joao ','Cisneros Maldonado',63,2,1,6);
+INSERT INTO `colaborador` VALUES (2,'28302883','Henry','Salcedo Arriaran',15,4,1,3);
+INSERT INTO `colaborador` VALUES (3,'70435122','Diana','Curilla Quispe',75,3,1,7);
