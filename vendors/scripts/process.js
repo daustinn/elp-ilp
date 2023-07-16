@@ -1,13 +1,13 @@
 var width = 100,
   perfData = window.performance.timing, // The PerformanceTiming interface represents timing-related performance information for the given page.
   EstimatedTime = -(perfData.loadEventEnd - perfData.navigationStart),
-  time = parseInt((EstimatedTime / 500) % 60) * 100;
+  time = parseInt((EstimatedTime / 1000) % 60) * 100;
 
 // Percentage Increment Animation
 var PercentageID = $("#percent1"),
   start = 0,
-  end = 40,
-  durataion = time;
+  end = 100,
+  durataion = 500;
 animateValue(PercentageID, start, end, durataion);
 
 function animateValue(id, start, end, duration) {
