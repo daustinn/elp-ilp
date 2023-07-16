@@ -6,6 +6,7 @@
   );
 
 
+<<<<<<< HEAD
   -- AREA TABLE
   CREATE TABLE IF NOT EXISTS `area` (
     `id` INT NOT NULL AUTO_INCREMENT,
@@ -15,6 +16,14 @@
     KEY `iddepartamento_idx` (`iddepartamento`),
     CONSTRAINT `iddepartamento` FOREIGN KEY (`iddepartamento`) REFERENCES `departamento` (`id`)
   );
+=======
+-- AREA TABLE
+CREATE TABLE IF NOT EXISTS `area` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `nombre` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+);
+>>>>>>> 8fac538476cb81995f5016d078acd00b76daae79
 
 
 
@@ -63,6 +72,7 @@
   );
 
 
+<<<<<<< HEAD
   -- COLLABORATOR TABLE
   CREATE TABLE IF NOT EXISTS `colaborador` (
     `id` int NOT NULL AUTO_INCREMENT,
@@ -83,6 +93,31 @@
     CONSTRAINT `idusuario` FOREIGN KEY (`idusuario`) REFERENCES `usuario` (`id`),
     CONSTRAINT `idpuesto` FOREIGN KEY (`idpuesto`) REFERENCES `puesto` (`id`)
   );
+=======
+-- COLLABORATOR TABLE
+CREATE TABLE IF NOT EXISTS `colaborador` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `dni` varchar(8) DEFAULT NULL,
+  `nombre` varchar(255) DEFAULT NULL,
+  `apellido` varchar(255) DEFAULT NULL,
+  `idcargo` int DEFAULT NULL,
+  `idusuario` int DEFAULT NULL,
+  `idsede` int DEFAULT NULL,
+  `idpuesto` int DEFAULT NULL,
+  `idarea` int DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `idcargo_idx` (`idcargo`),
+  KEY `idusuario_idx` (`idusuario`),
+  KEY `idsede_idx` (`idsede`),
+  KEY `idpuesto_idx` (`idpuesto`),
+  KEY `idarea_idx` (`idarea`),
+  CONSTRAINT `idcargo` FOREIGN KEY (`idcargo`) REFERENCES `cargo` (`id`),
+  CONSTRAINT `idsede` FOREIGN KEY (`idsede`) REFERENCES `sede` (`id`),
+  CONSTRAINT `idusuario` FOREIGN KEY (`idusuario`) REFERENCES `usuario` (`id`),
+  CONSTRAINT `idpuesto` FOREIGN KEY (`idpuesto`) REFERENCES `puesto` (`id`),
+  CONSTRAINT `idarea` FOREIGN KEY (`idarea`) REFERENCES `area` (`id`)
+);
+>>>>>>> 8fac538476cb81995f5016d078acd00b76daae79
 
 
   -- EMAILS TABLE
