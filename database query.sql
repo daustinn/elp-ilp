@@ -156,8 +156,10 @@ CREATE TABLE IF NOT EXISTS `evaluacion` (
 INSERT INTO `rol` VALUES (1, 'admin');
 INSERT INTO `rol` VALUES (2, 'colab');
 
-INSERT INTO `usuario` VALUES (1, 'root', 'root',1);
-INSERT INTO `usuario` VALUES (2, 'colab','colab',2);
+INSERT INTO `usuario` VALUES (1,'root','root',1);
+INSERT INTO `usuario` VALUES (2,'joaocisneros@elp.edu.pe','123',2);
+INSERT INTO `usuario` VALUES (3,'dianacurilla@elp.edu.pe','123',2);
+INSERT INTO `usuario` VALUES (4,'henrysalcedo@elp.edu.pe','123',2);
 
 INSERT INTO `departamento` VALUES (1,'General');
 INSERT INTO `departamento` VALUES (2,'Administrativa');
@@ -181,10 +183,6 @@ INSERT INTO `sede` VALUES (1,'Alameda');
 INSERT INTO `sede` VALUES (2,'Jazmines');
 INSERT INTO `sede` VALUES (3,'Casuarinas');
 
-INSERT INTO `usuario` VALUES (1,'admin','admin',1);
-INSERT INTO `usuario` VALUES (2,'joaocisneros@elp.edu.pe','123',2);
-INSERT INTO `usuario` VALUES (3,'dianacurilla@elp.edu.pe','123',2);
-INSERT INTO `usuario` VALUES (4,'henrysalcedo@elp.edu.pe','123',2);
 
 INSERT INTO `cargo` VALUES (1,'Director general');
 INSERT INTO `cargo` VALUES (2,'Directora adjunta');
