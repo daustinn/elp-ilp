@@ -1,6 +1,20 @@
 <?php include 'components/head.php' ?>
 
 <body class="login-page">
+    <div class="pre-loader">
+        <div class="pre-loader-box">
+            <div class="loader-logo">
+                <!-- <img src="vendors/images/deskapp-logo.svg" alt="" /> -->
+                <img src="src/images/logo_elp.gif" class="w-40" alt="">
+            </div>
+            <div class="loader-progress" id="progress_div">
+                <div class="bar" id="bar1"></div>
+            </div>
+            <div class="percent" id="percent1">0%</div>
+            <div class=" text-sm text-center animation-pulse">Cargando...</div>
+        </div>
+    </div>
+
     <div class="login-wrap d-flex align-items-center flex-wrap justify-content-center">
         <div class="container">
             <div class="row align-items-center">
@@ -45,6 +59,10 @@
             </div>
         </div>
     </div>
+    <script src="vendors/scripts/core.js"></script>
+    <script src="vendors/scripts/script.min.js"></script>
+    <script src="vendors/scripts/process.js"></script>
+    <script src="vendors/scripts/layout-settings.js"></script>
 </body>
 
 </html>
