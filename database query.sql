@@ -10,10 +10,7 @@ CREATE TABLE IF NOT EXISTS `departamento` (
 CREATE TABLE IF NOT EXISTS `area` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `nombre` varchar(255) DEFAULT NULL,
-  `iddepartamento` INT DEFAULT NULL,
   PRIMARY KEY (`id`),
-  KEY `iddepartamento_idx` (`iddepartamento`),
-  CONSTRAINT `iddepartamento` FOREIGN KEY (`iddepartamento`) REFERENCES `departamento` (`id`)
 );
 
 
@@ -73,15 +70,18 @@ CREATE TABLE IF NOT EXISTS `colaborador` (
   `idusuario` int DEFAULT NULL,
   `idsede` int DEFAULT NULL,
   `idpuesto` int DEFAULT NULL,
+  `idarea` int DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `idcargo_idx` (`idcargo`),
   KEY `idusuario_idx` (`idusuario`),
   KEY `idsede_idx` (`idsede`),
   KEY `idpuesto_idx` (`idpuesto`),
+  KEY `idarea_idx` (`idarea`),
   CONSTRAINT `idcargo` FOREIGN KEY (`idcargo`) REFERENCES `cargo` (`id`),
   CONSTRAINT `idsede` FOREIGN KEY (`idsede`) REFERENCES `sede` (`id`),
   CONSTRAINT `idusuario` FOREIGN KEY (`idusuario`) REFERENCES `usuario` (`id`),
-  CONSTRAINT `idpuesto` FOREIGN KEY (`idpuesto`) REFERENCES `puesto` (`id`)
+  CONSTRAINT `idpuesto` FOREIGN KEY (`idpuesto`) REFERENCES `puesto` (`id`),
+  CONSTRAINT `idarea` FOREIGN KEY (`idarea`) REFERENCES `area` (`id`)
 );
 
 
