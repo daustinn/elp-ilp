@@ -1,13 +1,9 @@
-var width = 100,
-  perfData = window.performance.timing, // The PerformanceTiming interface represents timing-related performance information for the given page.
-  EstimatedTime = -(perfData.loadEventEnd - perfData.navigationStart),
-  time = parseInt((EstimatedTime / 500) % 60) * 100;
-
+var width = 500;
 // Percentage Increment Animation
 var PercentageID = $("#percent1"),
   start = 0,
-  end = 40,
-  durataion = time;
+  end = 500,
+  durataion = 500;
 animateValue(PercentageID, start, end, durataion);
 
 function animateValue(id, start, end, duration) {
@@ -31,4 +27,4 @@ function animateValue(id, start, end, duration) {
 // Fading Out Loadbar on Finised
 setTimeout(function () {
   $(".pre-loader").fadeOut(300);
-}, time);
+}, 500);
