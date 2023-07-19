@@ -13,12 +13,12 @@ function obtenerListaSede()
         $query = "SELECT * FROM sede";
         $result = $conexion->query($query);
         if ($result && $result->num_rows > 0) {
-            $colaboradores = array();
+            $sedes = array();
             while ($row = $result->fetch_assoc()) {
-                $colaboradores[] = $row;
+                $sedes[] = $row;
             }
             $conexion->close();
-            return $colaboradores;
+            return $sedes;
         }
         $conexion->close();
     }

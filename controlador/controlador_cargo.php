@@ -13,12 +13,12 @@ function obtenerListaCargo()
         $query = "SELECT * FROM cargo";
         $result = $conexion->query($query);
         if ($result && $result->num_rows > 0) {
-            $colaboradores = array();
+            $cargos = array();
             while ($row = $result->fetch_assoc()) {
-                $colaboradores[] = $row;
+                $cargos[] = $row;
             }
             $conexion->close();
-            return $colaboradores;
+            return $cargos;
         }
         $conexion->close();
     }
@@ -33,12 +33,12 @@ function modificarCargo()
         $query = " UPDATE  cargo set nombre ='Nuevonombre' WHERE id= 1 ";
         $result = $conexion->query($query);
         if ($result && $result->num_rows > 0) {
-            $colaboradores = array();
+            $cargos = array();
             while ($row = $result->fetch_assoc()) {
-                $colaboradores[] = $row;
+                $cargos[] = $row;
             }
             $conexion->close();
-            return $colaboradores;
+            return $cargos;
         }
         $conexion->close();x
     }
@@ -53,12 +53,12 @@ function eliminarCargo()
         $query = " UPDATE  FROM cargo WHERE id= 1 ";
         $result = $conexion->query($query);
         if ($result && $result->num_rows > 0) {
-            $colaboradores = array();
+            $cargos = array();
             while ($row = $result->fetch_assoc()) {
-                $colaboradores[] = $row;
+                $cargos[] = $row;
             }
             $conexion->close();
-            return $colaboradores;
+            return $cargos;
         }
         $conexion->close();x
     }
