@@ -13,12 +13,12 @@ function obtenerListaCorreos()
         $query = "SELECT * FROM correos";
         $result = $conexion->query($query);
         if ($result && $result->num_rows > 0) {
-            $colaboradores = array();
+            $correos = array();
             while ($row = $result->fetch_assoc()) {
-                $colaboradores[] = $row;
+                $correos[] = $row;
             }
             $conexion->close();
-            return $colaboradores;
+            return $correos;
         }
         $conexion->close();
     }

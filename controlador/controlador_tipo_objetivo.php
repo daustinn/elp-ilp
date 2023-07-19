@@ -13,12 +13,12 @@ function obtenerListaTipo_objetivo()
         $query = "SELECT * FROM tipo_objetivo";
         $result = $conexion->query($query);
         if ($result && $result->num_rows > 0) {
-            $colaboradores = array();
+            $tipo_objetivos = array();
             while ($row = $result->fetch_assoc()) {
-                $colaboradores[] = $row;
+                $tipo_objetivos[] = $row;
             }
             $conexion->close();
-            return $colaboradores;
+            return $tipo_objetivos;
         }
         $conexion->close();
     }
