@@ -1,119 +1,70 @@
-<!-- include component head -->
-<?php include 'components/head-logged-in.php' ?>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Formulario Tipo de Objetivo</title>
+    <!-- Agregar los enlaces a los estilos de Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        /* Estilos personalizados */
+        .form-container {
+            max-width: 500px;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
 
+        .form-title {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .form-group label {
+            font-weight: bold;
+        }
+
+        .form-group textarea {
+            resize: none;
+        }
+
+        .form-btn-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
+</head>
 <body>
-    <div class="pre-loader">
-        <div class="pre-loader-box">
-            <div class="loader-logo">
-                <!-- <img src="vendors/images/deskapp-logo.svg" alt="" /> -->
-                <img src="src/images/logo_elp.gif" class="w-40" alt="">
-            </div>
-            <div class="loader-progress" id="progress_div">
-                <div class="bar" id="bar1"></div>
-            </div>
-            <div class="percent" id="percent1">0%</div>
-            <div class=" text-sm text-center animation-pulse">Cargando...</div>
+    <div class="container mt-5">
+        <div class="form-container">
+            <h2 class="form-title">Formulario Tipo de Objetivo</h2>
+            <form action="procesar_tipo_objetivo.php" method="post">
+                <div class="form-group">
+                    <label for="tipo_objetivo">Tipo de Objetivo:</label>
+                    <select class="form-control" id="tipo_objetivo" name="tipo_objetivo" required>
+                        <option value="">Seleccione un tipo de objetivo</option>
+                        <option value="Objetivos Laborales">Objetivos Laborales</option>
+                        <option value="Plan de Mejora">Plan de Mejora</option>
+                        <option value="Objetivos Personales">Objetivos Personales</option>
+                    </select>
+                </div>
+            
+                <div class="form-group">
+                    <label for="objetivo">Objetivo del Colaborador:</label>
+                    <textarea class="form-control" id="objetivo" name="objetivo" rows="4" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="indicador_logro">Indicador de Logro (%):</label>
+                    <input type="number" class="form-control" id="indicador_logro" name="indicador_logro" required>
+                </div>
+                <div class="form-btn-container">
+                    <button type="submit" class="btn btn-primary">Enviar</button>
+                </div>
+            </form>
         </div>
     </div>
-
-
-    <!-- include component nav -->
-    <?php include 'components/nav.php' ?>
-
-    <!-- include left sidebar -->
-    <?php include 'components/left-sidebar.php' ?>
-
-    <div class="mobile-menu-overlay"></div>
-
-    <!-- CONTENT PAGE START -->
-    <div class="main-container">
-        <div class="xs-pd-20-10 pd-ltr-20">
-            <div class="title pb-20">
-                <h2 class="h3 mb-0">Objtivos pages</h2>
-            </div>
-        </div>
-    </div>
-    <!-- CONTENT PAGE END  -->
-    <div class="container mt-5 pl-[200px]">
-        <h1 class="mb-4">Encuesta de Objetivos para Colaboradores</h1>
-        <form action="procesar_encuesta.php" method="post">
-            <div class="form-group">
-                <label for="nombre">Nombre del Colaborador:</label>
-                <input type="text" class="form-control" name="nombre" required>
-            </div>
-
-            <div class="form-group">
-                <label for="apellidos">Apellidos del Colaborador:</label>
-                <input type="text" class="form-control" name="apellidos" required>
-            </div>
-
-            <div class="form-group">
-                <label for="cargo">Cargo del Colaborador:</label>
-                <input type="text" class="form-control" name="cargo" required>
-            </div>
-
-            <div class="form-group">
-                <label for="area">Área del Colaborador:</label>
-                <select class="form-control" name="area" required>
-                    <option value="" disabled selected>Selecciona el área</option>
-                    <option value="Area 1">Area 1</option>
-                    <option value="Area 2">Area 2</option>
-                    <option value="Area 3">Area 3</option>
-                    <!-- Agrega más opciones según tus necesidades -->
-                </select>
-            </div>
-
-            <div class="form-group">
-                <label for="fecha_inicio">Fecha de Inicio:</label>
-                <input type="date" class="form-control" name="fecha_inicio" required>
-            </div>
-
-            <div class="form-group">
-                <label for="fecha_fin">Fecha de Fin:</label>
-                <input type="date" class="form-control" name="fecha_fin" required>
-            </div>
-
-            <div class="form-group">
-                <label>Tipo de Objetivo:</label><br>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="tipo_objetivo" value="Plan de Mejora" required>
-                    <label class="form-check-label">Plan de Mejora</label>
-                </div>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="tipo_objetivo" value="Objetivos Personales" required>
-                    <label class="form-check-label">Objetivos Personales</label>
-                </div>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="tipo_objetivo" value="Objetivos Laborales" required>
-                    <label class="form-check-label">Objetivos Laborales</label>
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label for="objetivo">Objetivo del Colaborador:</label>
-                <textarea class="form-control" name="objetivo" rows="4" required></textarea>
-            </div>
-
-            <div class="form-group">
-                <label for="indicador_logro">Indicador de Logro (%):</label>
-                <input type="number" class="form-control" name="indicador_logro" min="0" max="100" required>
-            </div>
-
-            <input type="submit" class="btn btn-primary" value="Enviar">
-        </form>
-    </div>
-
-    <!-- js -->
-    <script src="vendors/scripts/core.js"></script>
-    <script src="vendors/scripts/script.min.js"></script>
-    <script src="vendors/scripts/process.js"></script>
-    <script src="vendors/scripts/layout-settings.js"></script>
-    <script src="src/plugins/apexcharts/apexcharts.min.js"></script>
-    <script src="src/plugins/datatables/js/jquery.dataTables.min.js"></script>
-    <script src="src/plugins/datatables/js/dataTables.bootstrap4.min.js"></script>
-    <script src="src/plugins/datatables/js/dataTables.responsive.min.js"></script>
-    <script src="src/plugins/datatables/js/responsive.bootstrap4.min.js"></script>
-    <script src="vendors/scripts/dashboard3.js"></script>
+    <!-- Agregar el enlace al archivo de scripts de Bootstrap -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
-
 </html>
