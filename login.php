@@ -23,7 +23,11 @@
                 </div>
                 <div class="col-md-6 col-lg-5">
                     <div class="login-box bg-white box-shadow border-radius-10">
+
+
+
                         <div class="login-title">
+                        
                             <h2 class="text-center text-primary">Inicar sesión</h2>
                         </div>
                         <?php
