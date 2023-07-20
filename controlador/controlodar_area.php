@@ -13,12 +13,12 @@ function obtenerListaAarea()
         $query = "SELECT * FROM area";
         $result = $conexion->query($query);
         if ($result && $result->num_rows > 0) {
-            $colaboradores = array();
+            $areas = array();
             while ($row = $result->fetch_assoc()) {
-                $colaboradores[] = $row;
+                $areas[] = $row;
             }
             $conexion->close();
-            return $colaboradores;
+            return $areas;
         }
         $conexion->close();
     }

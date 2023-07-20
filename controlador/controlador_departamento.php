@@ -13,12 +13,12 @@ function obtenerListaDepartamento()
         $query = "SELECT * FROM departamento";
         $result = $conexion->query($query);
         if ($result && $result->num_rows > 0) {
-            $colaboradores = array();
+            $departamentos = array();
             while ($row = $result->fetch_assoc()) {
-                $colaboradores[] = $row;
+                $departamentos[] = $row;
             }
             $conexion->close();
-            return $colaboradores;
+            return $departamentos;
         }
         $conexion->close();
     }

@@ -13,12 +13,12 @@ function obtenerListaPuesto()
         $query = "SELECT * FROM puesto";
         $result = $conexion->query($query);
         if ($result && $result->num_rows > 0) {
-            $colaboradores = array();
+            $puestos = array();
             while ($row = $result->fetch_assoc()) {
-                $colaboradores[] = $row;
+                $puestos[] = $row;
             }
             $conexion->close();
-            return $colaboradores;
+            return $puestos;
         }
         $conexion->close();
     }

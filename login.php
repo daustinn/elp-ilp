@@ -27,6 +27,11 @@
 
 
                         <div class="login-title">
+<<<<<<< HEAD
+=======
+                            <img src="src/images/logo_elp.gif"  class="w-41" >
+                            <br>
+>>>>>>> adc469a12cfe2292feba66d4a8ba16bb5713d0a5
                         
                             <h2 class="text-center text-primary">Inicar sesión</h2>
                         </div>

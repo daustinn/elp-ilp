@@ -13,12 +13,12 @@ function obtenerListaUsuario()
         $query = "SELECT * FROM usuario";
         $result = $conexion->query($query);
         if ($result && $result->num_rows > 0) {
-            $colaboradores = array();
+            $usuarios = array();
             while ($row = $result->fetch_assoc()) {
-                $colaboradores[] = $row;
+                $usuarios[] = $row;
             }
             $conexion->close();
-            return $colaboradores;
+            return $usuarios;
         }
         $conexion->close();
     }
