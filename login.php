@@ -27,14 +27,13 @@
 
 
                         <div class="login-title">
-                            <img src="src/images/logo_elp.gif"  class="w-41" >
+                            <img src="src/images/logo_elp.gif" class="w-44 mx-auto">
                             <br>
-                        
-                            <h2 class="text-center text-primary">Inicar sesión</h2>
+                            <h2 class="text-center text-neutral-600">Inicar sesión</h2>
                         </div>
                         <?php
                         include "modelo/conexion.php";
-                        include "controlador/controlador_login.php";
+                        include "controllers/login.controller.php";
                         ?>
                         <form method="post" action="">
                             <div class="input-group custom">
