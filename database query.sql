@@ -208,6 +208,7 @@ INSERT INTO `sede` VALUES (1,'Developers');
 INSERT INTO `sede` VALUES (2,'Alameda');
 INSERT INTO `sede` VALUES (3,'Jazmines');
 INSERT INTO `sede` VALUES (4,'Casuarinas');
+INSERT INTO `sede` VALUES (5,'Colegio');
 
 INSERT INTO `cargo` VALUES (1,'Developers');
 INSERT INTO `cargo` VALUES (2,'Director general');
