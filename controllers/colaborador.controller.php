@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Consulta y obtiene la lista de colaboradores.
  *

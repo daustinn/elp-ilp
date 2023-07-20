@@ -1,9 +1,9 @@
 <?php
-include '../services/sede.service.php';
+include '../services/area.service.php';
 
 //SI ELMETODO ES POST
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $lugar = $_POST["lugar"];
+    $lugar = $_POST["nombre"];
     registrarSede($lugar);
 }
 
