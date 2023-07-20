@@ -1,26 +1,25 @@
 <?php
-/**
- * Consulta y obtiene la lista de puntaje .
- *
- * @return array|false Array con los datos del puntaje o false en caso de error.
- */
+include '../services/puntaje.service.php';
 
-include 'modelo/conexion.php';
-function obtenerListaPuntaje()
-{
-    $conexion = connectToDatabase();
-    if ($conexion) {
-        $query = "SELECT * FROM puntaje";
-        $result = $conexion->query($query);
-        if ($result && $result->num_rows > 0) {
-            $colaboradores = array();
-            while ($row = $result->fetch_assoc()) {
-                $colaboradores[] = $row;
-            }
-            $conexion->close();
-            return $colaboradores;
-        }
-        $conexion->close();
-    }
-    return false;
+//SI ELMETODO ES POST
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $fecha_inicio = $_POST["fecha_inicio"];
+    $fecha_fin = $_POST["fecha_fin"];
+    $estado = $_POST["estado"];
+    $valor = $_POST["valor"];
+    $valor_inicial = $_POST["valor_inicial"];
+    $objetivo = $_POST["objetivo"];
+   //  registrarpuntaje($fecha_inicio, $fecha_fin, $estado, $valor, $valor_inicial, $objetivo);
+}
+
+//SI ELMETODO ES PUT
+if ($_SERVER["REQUEST_METHOD"] == "PUT") {
+    $id= $_PUT["id"];
+    $fecha_inicio = $_PUT["fecha_inicio"];
+    $fecha_fin = $_PUT["fecha_fin"];
+    $estado = $_PUT["estado"];
+    $valor = $_PUT["valor"];
+    $valor_inicial = $_PUT["valor_inicial"];
+    $objetivo = $_PUT["objetivo"];
+   //  actualizarpuntaje($id, $fecha_inicio, $fecha_fin, $estado, $valor, $valor_inicial, $objetivo);
 }
