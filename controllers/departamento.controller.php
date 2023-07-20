@@ -1,26 +1,15 @@
 <?php
-/**
- * Consulta y obtiene la lista de departamento.
- *
- * @return array|false Array con los datos de los departamento o false en caso de error.
- */
+include '../services/departamento.service.php';
 
-include 'modelo/conexion.php';
-function obtenerListaDepartamento()
-{
-    $conexion = connectToDatabase();
-    if ($conexion) {
-        $query = "SELECT * FROM departamento";
-        $result = $conexion->query($query);
-        if ($result && $result->num_rows > 0) {
-            $departamentos = array();
-            while ($row = $result->fetch_assoc()) {
-                $departamentos[] = $row;
-            }
-            $conexion->close();
-            return $departamentos;
-        }
-        $conexion->close();
-    }
-    return false;
+//SI ELMETODO ES POST
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $nombre = $_POST["nombre"];
+   //  registrardepartamento( $nombre);
+}
+
+//SI ELMETODO ES PUT
+if ($_SERVER["REQUEST_METHOD"] == "PUT") {
+    $id= $_PUT["id"];
+    $nombre = $_PUT["nombre"];
+   //  actualizarusuario( $id, $nombre);
 }

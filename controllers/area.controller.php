@@ -3,13 +3,13 @@ include '../services/area.service.php';
 
 //SI ELMETODO ES POST
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $lugar = $_POST["nombre"];
-    registrarSede($lugar);
+    $nombre = $_POST["nombre"];
+   //  registrararea($nombre);
 }
 
 //SI ELMETODO ES PUT
 if ($_SERVER["REQUEST_METHOD"] == "PUT") {
-    $id = $_PUT["id"];
-    $lugar = $_PUT["lugar"];
-    // Update function
+    $id= $_PUT["id"];
+    $nombre = $_PUT["nombre"];
+   //  actualizararea( $id, $nombre);
 }

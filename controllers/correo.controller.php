@@ -1,26 +1,19 @@
 <?php
-/**
- * Consulta y obtiene la lista de correos.
- *
- * @return array|false Array con los datos de los correos o false en caso de error.
- */
+include '../services/correo.service.php';
 
-include 'modelo/conexion.php';
-function obtenerListaCorreos()
-{
-    $conexion = connectToDatabase();
-    if ($conexion) {
-        $query = "SELECT * FROM correos";
-        $result = $conexion->query($query);
-        if ($result && $result->num_rows > 0) {
-            $correos = array();
-            while ($row = $result->fetch_assoc()) {
-                $correos[] = $row;
-            }
-            $conexion->close();
-            return $correos;
-        }
-        $conexion->close();
-    }
-    return false;
+//SI ELMETODO ES POST
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $tipo_correo = $_POST["tipo_correo"];
+    $valor = $_POST["valor"];
+    $colaborador = $_POST["colaborador"];
+   //  registrarcorreo($tipo_correo, $valor, $colaborador);
+}
+
+//SI ELMETODO ES PUT
+if ($_SERVER["REQUEST_METHOD"] == "PUT") {
+    $id= $_PUT["id"];
+    $tipo_correo = $_PUT["tipo_correo"];
+    $valor = $_PUT["valor"];
+    $colaborador = $_PUT["colaborador"];
+   //  actualizarcorreo($id, $tipo_correo, $valor, $colaborador);
 }
