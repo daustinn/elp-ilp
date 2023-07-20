@@ -65,13 +65,13 @@ $rol = $_SESSION['rol'];
                             <span class="micon bi bi-hdd-stack"></span><span class="mtext">Otros</span>
                         </a>
                         <ul class="submenu">
-                            <li><a href="otros/usuarios.php">Usuarios</a></li>
-                            <li><a href="otros/roles.php">Roles</a></li>
-                            <li><a href="otros/usuarios.php">Sedes</a></li>
-                            <li><a href="otros/sedes.php">Areas</a></li>
-                            <li><a href="otros/departamentos.php">Departamentos</a></li>
-                            <li><a href="otros/tipo-objetivos.php">Tipo Objetivos</a></li>
-                            <li><a href="otros/correos.php">Correos</a></li>
+                            <li><a href="usuarios.php">Usuarios</a></li>
+                            <li><a href="roles.php">Roles</a></li>
+                            <li><a href="sedes.php">Sedes</a></li>
+                            <li><a href="areas.php">Areas</a></li>
+                            <li><a href="departamentos.php">Departamentos</a></li>
+                            <li><a href="tipo-objetivos.php">Tipo Objetivos</a></li>
+                            <li><a href="correos.php">Correos</a></li>
                         </ul>
                     </li>
                 <?php
