@@ -1,71 +1,73 @@
-<!DOCTYPE html>
-<html lang="en">
+<?php include 'components/head.php' ?>
 
-<head>
-   <meta charset="utf-8">
-   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-   <link rel="stylesheet" href="css/bootstrap.css">
-   <link rel="stylesheet" type="text/css" href="css/style.css">
-   <link href="https://fonts.googleapis.com/css?family=Poppins:600&display=swap" rel="stylesheet">
-   <!-- <link rel="stylesheet" href="css/all.min.css"> -->
-   <!-- <link rel="stylesheet" href="css/fontawesome.min.css"> -->
-   <link href="https://tresplazas.com/web/img/big_punto_de_venta.png" rel="shortcut icon">
-   <title>Inicio de sesión</title>
-   <script src="https://cdn.tailwindcss.com"></script>
-</head>
-
-<body>
-   <img class="wave" src="img/wave.png">
-   <div class="container">
-      <div class="img">
-
-      </div>
-      <div class="login-content">
-         <form method="post" action="">
-            <img src="img/avatar.svg">
-            <h2 class="title">BIENVENIDO</h2>
-            <?php
-            include "modelo/conexion.php";
-            include "controlador/controlador_login.php";
-            ?>
-            <div class="input-div one">
-               <div class="i">
-                  <i class="fas fa-user"></i>
-               </div>
-               <div class="div">
-                  <h5>Usuario</h5>
-                  <input id="usuario" type="text" class="input" name="usuario">
-               </div>
+<body class="login-page">
+    <div class="pre-loader">
+        <div class="pre-loader-box">
+            <div class="loader-logo">
+                <!-- <img src="vendors/images/deskapp-logo.svg" alt="" /> -->
+                <img src="src/images/logo_elp.gif" class="w-40" alt="">
             </div>
-            <div class="input-div pass">
-               <div class="i">
-                  <i class="fas fa-lock"></i>
-               </div>
-               <div class="div">
-                  <h5>Contraseña</h5>
-                  <input type="password" id="input" class="input" name="contraseña">
-               </div>
+            <div class="loader-progress" id="progress_div">
+                <div class="bar" id="bar1"></div>
             </div>
-            <div class="view">
-               <div class="fas fa-eye verPassword" onclick="vista()" id="verPassword"></div>
-            </div>
+            <div class="percent" id="percent1">0%</div>
+            <div class=" text-sm text-center animation-pulse">Cargando...</div>
+        </div>
+    </div>
 
-            <div class="text-center">
-               <a class="font-italic isai5" href="">Olvidé mi contraseña</a>
-               <a class="font-italic isai5" href="">Registrarse</a>
-            </div>
-            <input name="btningresar" class="btn btn-primary bg-blue-500" type="submit" value="INICIAR SESION">
-         </form>
-      </div>
-   </div>
-   <script src="js/fontawesome.js"></script>
-   <script src="js/main.js"></script>
-   <script src="js/main2.js"></script>
-   <script src="js/jquery.min.js"></script>
-   <script src="js/bootstrap.js"></script>
-   <script src="js/bootstrap.bundle.js"></script>
+    <div class="login-wrap d-flex align-items-center flex-wrap justify-content-center">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6 col-lg-7">
+                    <img src="vendors/images/login-page-img.png" alt="" />
+                </div>
+                <div class="col-md-6 col-lg-5">
+                    <div class="login-box bg-white box-shadow border-radius-10">
 
+
+
+                        <div class="login-title">
+                            <img src="src/images/logo_elp.gif" class="w-44 mx-auto">
+                            <br>
+                            <h2 class="text-center text-neutral-600">Inicar sesión</h2>
+                        </div>
+                        <?php
+                        include "modelo/conexion.php";
+                        include "controllers/login.controller.php";
+                        ?>
+                        <form method="post" action="">
+                            <div class="input-group custom">
+                                <input id="usuario" type="text" class="form-control form-control-lg" name="usuario" placeholder="Usuario" />
+                                <div class="input-group-append custom">
+                                    <span class="input-group-text"><i class="icon-copy dw dw-user1"></i></span>
+                                </div>
+                            </div>
+
+                            <div class="input-group custom">
+                                <input type="password" class="form-control form-control-lg" name="contraseña" placeholder="Contraseña" />
+                                <div class="input-group-append custom">
+                                    <span class="input-group-text"><i class="dw dw-padlock1"></i></span>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div class="input-group mb-0">
+                                        <input name="btningresar" type="submit" class="btn btn-primary bg-blue-700 btn-lg btn-block" value="Entrar" />
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="vendors/scripts/core.js"></script>
+    <script src="vendors/scripts/script.min.js"></script>
+    <script src="vendors/scripts/process.js"></script>
+    <script src="vendors/scripts/layout-settings.js"></script>
 </body>
 
 </html>

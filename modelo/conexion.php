@@ -8,15 +8,15 @@
 
 function connectToDatabase()
 {
-     $host = 'containers-us-west-108.railway.app';
-     $port = '6636';
+     $host = 'localhost';
+     $port = '3306';
      $username = 'root';
-     $password = '81YTQQn9iz4OkZxOKRbU';
-     $database = 'railway';
+     $password = 'root';
+     $database = 'elp_db';
 
      try {
           $connection = new mysqli($host . ':' . $port, $username, $password, $database);
-          $connection->set_charset("utf8mb4");
+          $connection->set_charset("utf8");
           return $connection;
      } catch (mysqli_sql_exception $e) {
           echo "Error connecting to the database: " . $e->getMessage();
