@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Establishes a connection to the MySQL database.
  *
@@ -11,7 +12,7 @@ function connectToDatabase()
      $host = 'localhost';
      $port = '3306';
      $username = 'root';
-     $password = 'root';
+     $password = '';
      $database = 'elp_db';
 
      try {

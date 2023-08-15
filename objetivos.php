@@ -1,54 +1,38 @@
-<<<<<<< HEAD
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Formulario Tipo de Objetivo</title>
-    <!-- Agregar los enlaces a los estilos de Bootstrap -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <style>
-        /* Estilos personalizados */
-        .form-container {
-            max-width: 500px;
-            margin: auto;
-            padding: 20px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-        }
-=======
 <!-- include component head -->
-<?php
-session_start();
-
-include 'components/head-logged-in.php';
-
-$fullname = $_SESSION['nombre'];
-$lastname = $_SESSION['apellido'];
-?>
+<?php include 'components/head.php' ?>
 
 
->>>>>>> 10d2b27f671f5efb41c83861ffa7c300a55a618e
+<style>
+    /* Estilos personalizados */
+    .form-container {
+        max-width: 500px;
+        margin: auto;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
 
-        .form-title {
-            text-align: center;
-            margin-bottom: 30px;
-        }
+    .form-title {
+        text-align: center;
+        margin-bottom: 30px;
+    }
 
-        .form-group label {
-            font-weight: bold;
-        }
+    .form-group label {
+        font-weight: bold;
+    }
 
-        .form-group textarea {
-            resize: none;
-        }
+    .form-group textarea {
+        resize: none;
+    }
 
-        .form-btn-container {
-            text-align: center;
-            margin-top: 20px;
-        }
-    </style>
-</head>
+    .form-btn-container {
+        text-align: center;
+        margin-top: 20px;
+    }
+</style>
+
 <body>
-    <div class="container mt-5">
+    <!-- <div class="container mt-5">
         <div class="form-container">
             <h2 class="form-title">Formulario Tipo de Objetivo</h2>
             <form action="procesar_tipo_objetivo.php" method="post">
@@ -61,7 +45,7 @@ $lastname = $_SESSION['apellido'];
                         <option value="Objetivos Personales">Objetivos Personales</option>
                     </select>
                 </div>
-            
+
                 <div class="form-group">
                     <label for="objetivo">Objetivo del Colaborador:</label>
                     <textarea class="form-control" id="objetivo" name="objetivo" rows="4" required></textarea>
@@ -75,14 +59,7 @@ $lastname = $_SESSION['apellido'];
                 </div>
             </form>
         </div>
-    </div>
-<<<<<<< HEAD
-    <!-- Agregar el enlace al archivo de scripts de Bootstrap -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-=======
-
+    </div> -->
 
     <!-- include component nav -->
     <?php include 'components/nav.php' ?>
@@ -261,6 +238,6 @@ $lastname = $_SESSION['apellido'];
     <script src="src/plugins/datatables/js/dataTables.responsive.min.js"></script>
     <script src="src/plugins/datatables/js/responsive.bootstrap4.min.js"></script>
     <script src="vendors/scripts/dashboard3.js"></script>
->>>>>>> 10d2b27f671f5efb41c83861ffa7c300a55a618e
 </body>
+
 </html>

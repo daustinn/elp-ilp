@@ -23,8 +23,8 @@ function handleLoginForm()
         //QUERY SQL
         $query_sql = "SELECT 
                         colaborador.id as 'id_colab',
-                        colaborador.nombre, 
-                        colaborador.apellido,
+                        colaborador.nombres, 
+                        colaborador.apellidos,
                         usuario.id as 'id_usuario',
                         usuario.usuario,
                         rol.nombre as 'rol',
