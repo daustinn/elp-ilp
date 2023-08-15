@@ -24,8 +24,7 @@ CREATE TABLE IF NOT EXISTS `sede` (
 -- PUESTO TABLE
 CREATE TABLE IF NOT EXISTS `puesto` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `puesto` INT DEFAULT NULL,
-  `tipo_puesto` VARCHAR(255) NULL,
+  `nombre`  VARCHAR(255) NULL,
   PRIMARY KEY (`id`)
 );
 
@@ -70,8 +69,11 @@ CREATE TABLE IF NOT EXISTS `colaborador` (
   `idpuesto` int DEFAULT NULL,
   `idarea` int DEFAULT NULL,
   `iddepartamento` int DEFAULT NULL,
+  `idsupervisor` int DEFAULT NULL,
+
   PRIMARY KEY (`id`),
   KEY `idcargo_idx` (`idcargo`),
+  KEY `idsupervisor_idx` (`idsupervisor`),
   KEY `idusuario_idx` (`idusuario`),
   KEY `idsede_idx` (`idsede`),
   KEY `idpuesto_idx` (`idpuesto`),
@@ -79,12 +81,14 @@ CREATE TABLE IF NOT EXISTS `colaborador` (
   KEY `iddepartamento_idx` (`iddepartamento`),
 
   CONSTRAINT `idcargo` FOREIGN KEY (`idcargo`) REFERENCES `cargo` (`id`),
+  CONSTRAINT `idsupervisor` FOREIGN KEY (`idsupervisor`) REFERENCES `colaborador` (`id`),
   CONSTRAINT `idsede` FOREIGN KEY (`idsede`) REFERENCES `sede` (`id`),
   CONSTRAINT `idusuario` FOREIGN KEY (`idusuario`) REFERENCES `usuario` (`id`),
   CONSTRAINT `idpuesto` FOREIGN KEY (`idpuesto`) REFERENCES `puesto` (`id`),
   CONSTRAINT `idarea` FOREIGN KEY (`idarea`) REFERENCES `area` (`id`),
   CONSTRAINT `iddepartamento` FOREIGN KEY (`iddepartamento`) REFERENCES `departamento` (`id`)
 );
+
 
 
 -- SCORE TYPE TABLE
@@ -103,13 +107,9 @@ CREATE TABLE IF NOT EXISTS `objetivo` (
   `descripcion` varchar(255) DEFAULT NULL,
   `porcentaje` INT DEFAULT NULL,
   `indicadores_logros` varchar(255) DEFAULT NULL,
-  `fecha_vencimiento` DATETIME DEFAULT NULL,
-  `estado_eva1` varchar(10) DEFAULT NULL, -- EARRING / APPROVED / REFUZED / FINISHED
-  `estado_eva2` varchar(10) DEFAULT NULL, -- EARRING / APPROVED / REFUZED / FINISHED
-  `puntaje_nicial_1` DECIMAL(1,1),
-  `puntaje_nicial_2` DECIMAL(1,1),
   `idcolaborador` INT DEFAULT NULL,
   `idtipo_objetivo` INT DEFAULT NULL,
+  `idobjetivo_detalles` INT DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `idcolaborador_idx` (`idcolaborador`),
   KEY `idtipo_objetivo_idx` (`idtipo_objetivo`),
@@ -117,6 +117,18 @@ CREATE TABLE IF NOT EXISTS `objetivo` (
   CONSTRAINT `idtipo_objetivo` FOREIGN KEY (`idtipo_objetivo`) REFERENCES `tipo_objetivo` (`id`)
 );
 
+-- AIM DETAILS TABLE
+CREATE TABLE IF NOT EXITS `objetivo_detalles` (
+   `id` int NOT NULL AUTO_INCREMENT,
+   `estado_eva1` varchar(10) DEFAULT NULL, -- EARRING / APPROVED / REFUZED / FINISHED
+   `estado_eva2` varchar(10) DEFAULT NULL, -- EARRING / APPROVED / REFUZED / FINISHED
+   `puntaje_nicial_1` DECIMAL(1,1),
+   `puntaje_nicial_2` DECIMAL(1,1),
+   `puntaje_1` DECIMAL(1,1),
+   `puntaje_2` DECIMAL(1,1),
+   `fecha_vencimiento` DATETIME DEFAULT NULL,
+   `fecha_finalizacion` DATETIME DEFAULT NULL,
+)
 
 
 -- ASSESSMENT TABLE
@@ -125,15 +137,14 @@ CREATE TABLE IF NOT EXISTS `evaluacion` (
   `fecha` DATETIME DEFAULT NULL,
   `puntaje_1` DECIMAL(1,1),
   `puntaje_2` DECIMAL(1,1),
-  `id_evaluador` int DEFAULT NULL,
-  `id_objetivo` int DEFAULT NULL,
+  `idevaluador` int DEFAULT NULL,
+  `idobjetivo` int DEFAULT NULL,
   PRIMARY KEY (`id`),
-  KEY `id_evaluador_idx` (`id_evaluador`),
-  KEY `id_objetivo_idx` (`id_objetivo`),
-  CONSTRAINT `id_evaluador` FOREIGN KEY (`id_evaluador`) REFERENCES `colaborador` (`id`),
-  CONSTRAINT `id_objetivo` FOREIGN KEY (`id_objetivo`) REFERENCES `objetivo` (`id`)
+  KEY `idevaluador_idx` (`idevaluador`),
+  KEY `idobjetivo_idx` (`idobjetivo`),
+  CONSTRAINT `idevaluador` FOREIGN KEY (`idevaluador`) REFERENCES `colaborador` (`id`),
+  CONSTRAINT `idobjetivo` FOREIGN KEY (`idobjetivo`) REFERENCES `objetivo` (`id`)
 );
-
 
 
 
