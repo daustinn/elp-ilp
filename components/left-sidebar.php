@@ -27,11 +27,6 @@ $rol = $_SESSION['rol'];
                     </a>
                 </li>
                 <li>
-                    <a href="calendario.php" class="dropdown-toggle no-arrow">
-                        <span class="micon bi bi-calendar4-week"></span><span class="mtext">Calendario</span>
-                    </a>
-                </li>
-                <li>
                     <a href="notas.php" class="dropdown-toggle no-arrow">
                         <span class="micon bi bi-receipt-cutoff"></span><span class="mtext">Notas</span>
                     </a>
@@ -65,13 +60,11 @@ $rol = $_SESSION['rol'];
                             <span class="micon bi bi-hdd-stack"></span><span class="mtext">Otros</span>
                         </a>
                         <ul class="submenu">
-                            <li><a href="usuarios.php">Usuarios</a></li>
                             <li><a href="roles.php">Roles</a></li>
                             <li><a href="sedes.php">Sedes</a></li>
                             <li><a href="areas.php">Areas</a></li>
                             <li><a href="departamentos.php">Departamentos</a></li>
                             <li><a href="tipo-objetivos.php">Tipo Objetivos</a></li>
-                            <li><a href="correos.php">Correos</a></li>
                         </ul>
                     </li>
                 <?php
