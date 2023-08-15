@@ -118,17 +118,20 @@ CREATE TABLE IF NOT EXISTS `objetivo` (
 );
 
 -- AIM DETAILS TABLE
-CREATE TABLE IF NOT EXITS `objetivo_detalles` (
+CREATE TABLE IF NOT EXISTS `objetivo_detalles` (
    `id` int NOT NULL AUTO_INCREMENT,
    `estado_eva1` varchar(10) DEFAULT NULL, -- EARRING / APPROVED / REFUZED / FINISHED
    `estado_eva2` varchar(10) DEFAULT NULL, -- EARRING / APPROVED / REFUZED / FINISHED
-   `puntaje_nicial_1` DECIMAL(1,1),
-   `puntaje_nicial_2` DECIMAL(1,1),
+   `puntaje_inicial_1` DECIMAL(1,1),
+   `puntaje_inicial_2` DECIMAL(1,1),
    `puntaje_1` DECIMAL(1,1),
    `puntaje_2` DECIMAL(1,1),
-   `fecha_vencimiento` DATETIME DEFAULT NULL,
+   `fecha_registro` DATETIME DEFAULT NULL,
    `fecha_finalizacion` DATETIME DEFAULT NULL,
+   `fecha_vencimiento` DATETIME DEFAULT NULL,
+   `fecha_Modificacion` DATETIME DEFAULT NULL,
 )
+
 
 
 
