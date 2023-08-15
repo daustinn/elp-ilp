@@ -50,8 +50,8 @@ function handleLoginForm()
                 // Valid credentials, initiate session and store additional user information
                 $row = $result->fetch_assoc();
                 $_SESSION['id_colab'] = $row['id_colab'];
-                $_SESSION['nombre'] = $row['nombre'];
-                $_SESSION['apellido'] = $row['apellido'];
+                $_SESSION['nombres'] = $row['nombres'];
+                $_SESSION['apellidos'] = $row['apellidos'];
                 $_SESSION['id_usuario'] = $row['id_usuario'];
                 $_SESSION['usuario'] = $row['usuario'];
                 $_SESSION['rol'] = $row['rol'];
