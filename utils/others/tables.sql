@@ -70,7 +70,6 @@ CREATE TABLE IF NOT EXISTS `colaborador` (
   `idarea` int DEFAULT NULL,
   `iddepartamento` int DEFAULT NULL,
   `idsupervisor` int DEFAULT NULL,
-
   PRIMARY KEY (`id`),
   KEY `idcargo_idx` (`idcargo`),
   KEY `idsupervisor_idx` (`idsupervisor`),
@@ -100,6 +99,22 @@ CREATE TABLE IF NOT EXISTS `tipo_objetivo` (
 );
 
 
+-- AIM DETAILS TABLE
+CREATE TABLE IF NOT EXISTS `objetivo_detalles` (
+   `id` int NOT NULL AUTO_INCREMENT,
+   `estado_eva1` varchar(10) DEFAULT NULL, -- EARRING / APPROVED / REFUZED / FINISHED
+   `estado_eva2` varchar(10) DEFAULT NULL, -- EARRING / APPROVED / REFUZED / FINISHED
+   `puntaje_inicial_1` INT DEFAULT NULL,
+   `puntaje_inicial_2` INT DEFAULT NULL,
+   `puntaje_1` INT DEFAULT NULL,
+   `puntaje_2` INT DEFAULT NULL,
+   `fecha_registro` DATETIME DEFAULT NULL,
+   `fecha_finalizacion` DATETIME DEFAULT NULL,
+   `fecha_vencimiento` DATETIME DEFAULT NULL,
+   `fecha_modificacion` DATETIME DEFAULT NULL,
+    PRIMARY KEY (`id`)
+);
+
 -- AIM TABLE
 CREATE TABLE IF NOT EXISTS `objetivo` (
   `id` int NOT NULL AUTO_INCREMENT,
@@ -112,25 +127,14 @@ CREATE TABLE IF NOT EXISTS `objetivo` (
   `idobjetivo_detalles` INT DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `idcolaborador_idx` (`idcolaborador`),
+  KEY `idobjetivo_detalles_idx` (`idobjetivo_detalles`),
   KEY `idtipo_objetivo_idx` (`idtipo_objetivo`),
   CONSTRAINT `idcolaborador` FOREIGN KEY (`idcolaborador`) REFERENCES `colaborador` (`id`),
+  CONSTRAINT `idobjetivo_detalles` FOREIGN KEY (`idobjetivo_detalles`) REFERENCES `objetivo_detalles` (`id`),
   CONSTRAINT `idtipo_objetivo` FOREIGN KEY (`idtipo_objetivo`) REFERENCES `tipo_objetivo` (`id`)
 );
 
--- AIM DETAILS TABLE
-CREATE TABLE IF NOT EXISTS `objetivo_detalles` (
-   `id` int NOT NULL AUTO_INCREMENT,
-   `estado_eva1` varchar(10) DEFAULT NULL, -- EARRING / APPROVED / REFUZED / FINISHED
-   `estado_eva2` varchar(10) DEFAULT NULL, -- EARRING / APPROVED / REFUZED / FINISHED
-   `puntaje_inicial_1` DECIMAL(1,1),
-   `puntaje_inicial_2` DECIMAL(1,1),
-   `puntaje_1` DECIMAL(1,1),
-   `puntaje_2` DECIMAL(1,1),
-   `fecha_registro` DATETIME DEFAULT NULL,
-   `fecha_finalizacion` DATETIME DEFAULT NULL,
-   `fecha_vencimiento` DATETIME DEFAULT NULL,
-   `fecha_Modificacion` DATETIME DEFAULT NULL,
-)
+
 
 
 

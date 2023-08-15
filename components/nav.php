@@ -9,8 +9,8 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
     exit();
 }
 
-$fullname = $_SESSION['nombre'];
-$lastname = $_SESSION['apellido'];
+$fullname = $_SESSION['nombres'];
+$lastname = $_SESSION['apellidos'];
 ?>
 
 

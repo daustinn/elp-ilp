@@ -30,8 +30,7 @@ function handleLoginForm()
                         rol.nombre as 'rol',
                         cargo.nombre as 'cargo',
                         sede.lugar as 'sede',
-                        puesto.puesto,
-                        puesto.tipo_puesto
+                        puesto.nombre
                         FROM colaborador
                         INNER JOIN usuario ON colaborador.idusuario = usuario.id
                         INNER JOIN rol ON usuario.idrol = rol.id

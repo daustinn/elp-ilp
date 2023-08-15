@@ -170,15 +170,15 @@ INSERT INTO `departamento` VALUES (8,'Educacion Continua');
 INSERT INTO `departamento` VALUES (9,'Centro de Idiomas');
 
 -- QUERY POST ADD
-INSERT INTO `puesto` VALUES (1'Developers');
-INSERT INTO `puesto` VALUES (2'Director');
-INSERT INTO `puesto` VALUES (3'Asesor');
-INSERT INTO `puesto` VALUES (4'Jefe');
-INSERT INTO `puesto` VALUES (5'Coordinador');
-INSERT INTO `puesto` VALUES (6'Analista');
-INSERT INTO `puesto` VALUES (7'Asistente');
-INSERT INTO `puesto` VALUES (8'Practicante');
-INSERT INTO `puesto` VALUES (9'Operario');
+INSERT INTO `puesto` VALUES (1, 'Developers');
+INSERT INTO `puesto` VALUES (2, 'Director');
+INSERT INTO `puesto` VALUES (3, 'Asesor');
+INSERT INTO `puesto` VALUES (4, 'Jefe');
+INSERT INTO `puesto` VALUES (5, 'Coordinador');
+INSERT INTO `puesto` VALUES (6, 'Analista');
+INSERT INTO `puesto` VALUES (7, 'Asistente');
+INSERT INTO `puesto` VALUES (8, 'Practicante');
+INSERT INTO `puesto` VALUES (9, 'Operario');
 
 -- QUERY SEDE ADD
 INSERT INTO `sede` VALUES (1,'Developers');
@@ -273,4 +273,4 @@ INSERT INTO `cargo` VALUES (82,'Operario de Seguridad');
 INSERT INTO `cargo` VALUES (83,'Operario de Limpieza');
 
 -- QUERY COLABORDAROR ADD
-INSERT INTO `colaborador` VALUES (1,'99999999','Usuario','admin',1,1,1,1,1,1);
+INSERT INTO `colaborador` VALUES (1,'99999999','Usuario','admin',1,1,1,1,1,1,1);
