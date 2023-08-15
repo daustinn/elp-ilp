@@ -131,24 +131,6 @@ CREATE TABLE IF NOT EXITS `objetivo_detalles` (
 )
 
 
--- ASSESSMENT TABLE
-CREATE TABLE IF NOT EXISTS `evaluacion` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `fecha` DATETIME DEFAULT NULL,
-  `puntaje_1` DECIMAL(1,1),
-  `puntaje_2` DECIMAL(1,1),
-  `idevaluador` int DEFAULT NULL,
-  `idobjetivo` int DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `idevaluador_idx` (`idevaluador`),
-  KEY `idobjetivo_idx` (`idobjetivo`),
-  CONSTRAINT `idevaluador` FOREIGN KEY (`idevaluador`) REFERENCES `colaborador` (`id`),
-  CONSTRAINT `idobjetivo` FOREIGN KEY (`idobjetivo`) REFERENCES `objetivo` (`id`)
-);
-
-
-
-
 
 
 
