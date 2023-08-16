@@ -72,18 +72,14 @@ $roles = getRoles();
                                             if ($roles) {
                                                 foreach ($roles as $rol) {
                                                     echo "<td class='p-1'>" . $user['rol'] . "</td>";
-                                                    echo "
-                                        <option value='" . $rol['id'] . "'>"
-                                                        . $rol['nombre'] .
+                                                    echo "<option value='" . $rol['id'] . "'>"
+                                                        . $rol['descripcion'] .
                                                         "</option>";
                                                 }
                                             } else {
                                                 echo "<tr><td colspan='2'>No hay sedes registradas.</td></tr>";
                                             }
                                             ?>
-                                            <option value="1">
-                                                Personal
-                                            </option>
                                         </select>
                                     </div>
                                 </div>
@@ -125,11 +121,11 @@ $roles = getRoles();
                             echo "<td class='p-1'>" . $user['contraseña'] . "</td>";
                             echo "<td class='p-1'>" . $user['rol'] . "</td>";
                             echo "<td class='p-1'>
-                                    <div class='flex gap-2'>
-                                        <button class='btn btn-primary'>Editar</button>
-                                        <button class='btn btn-danger'>Editar</button>
-                                    </div>
-                                </td>";
+                                        <div class='flex gap-2'>
+                                            <button class='btn btn-primary'>Editar</button>
+                                            <button class='btn btn-danger'>Editar</button>
+                                        </div>
+                                    </td>";
                             echo "</tr>";
                         }
                     } else {

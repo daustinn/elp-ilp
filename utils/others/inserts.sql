@@ -1,7 +1,7 @@
 
 -- QUERY ROL ADD
-INSERT INTO `rol` VALUES (1, 'admin');
-INSERT INTO `rol` VALUES (2, 'colab');
+INSERT INTO `rol` VALUES (1, 'admin', 'Administrador');
+INSERT INTO `rol` VALUES (2, 'colab', 'Colaborador');
 
 -- QUERY AREA ADD
 INSERT INTO `area` VALUES (1,'Developers');

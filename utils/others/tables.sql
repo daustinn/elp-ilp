@@ -41,6 +41,7 @@ CREATE TABLE IF NOT EXISTS `cargo` (
 CREATE TABLE IF NOT EXISTS `rol` (
   `id` int NOT NULL AUTO_INCREMENT,
   `nombre` varchar(255) DEFAULT NULL,
+  `descripcion` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
 );
 
