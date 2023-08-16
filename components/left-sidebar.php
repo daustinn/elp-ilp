@@ -46,7 +46,7 @@ $rol = $_SESSION['rol'];
                         </ul>
                     </li>
                     <li class="">
-                        <a href="javascript:;" class="dropdown-toggle no-arrow">
+                        <a href="usuarios.php" class="dropdown-toggle no-arrow">
                             <span class="micon bi bi-people"></span><span class="mtext">Usuarios</span>
                         </a>
                     </li>
