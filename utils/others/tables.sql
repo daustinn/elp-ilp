@@ -1,15 +1,16 @@
 -- DEPARTAMENT TABLE
 CREATE TABLE IF NOT EXISTS `departamento` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `nombre` varchar(255) DEFAULT NULL,
+  `nombre` varchar(255) NOT NULL,
+  `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
 );
-
 
 -- AREA TABLE
 CREATE TABLE IF NOT EXISTS `area` (
   `id` INT NOT NULL AUTO_INCREMENT,
-  `nombre` varchar(255) DEFAULT NULL,
+  `nombre` varchar(255) NOT NULL,
+  `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
 );
 
@@ -17,46 +18,45 @@ CREATE TABLE IF NOT EXISTS `area` (
 CREATE TABLE IF NOT EXISTS `sede` (
   `id` int NOT NULL AUTO_INCREMENT,
   `lugar` varchar(255) DEFAULT NULL,
+  `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
 );
-
 
 -- PUESTO TABLE
 CREATE TABLE IF NOT EXISTS `puesto` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `nombre`  VARCHAR(255) NULL,
+  `nombre` VARCHAR(255) NULL,
+  `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
 );
-
 
 -- CARGO TABLE
 CREATE TABLE IF NOT EXISTS `cargo` (
   `id` int NOT NULL AUTO_INCREMENT,
   `nombre` varchar(255) DEFAULT NULL,
+  `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
 );
-
 
 -- ROL TABLE
 CREATE TABLE IF NOT EXISTS `rol` (
   `id` int NOT NULL AUTO_INCREMENT,
   `nombre` varchar(255) DEFAULT NULL,
   `descripcion` varchar(255) DEFAULT NULL,
+  `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
 );
 
-
--- USER TABLE
 CREATE TABLE IF NOT EXISTS `usuario` (
   `id` int NOT NULL AUTO_INCREMENT,
   `usuario` varchar(100) NOT NULL,
   `contraseña` varchar(255) DEFAULT 'Pontificia2023',
   `idrol` int NOT NULL,
+  `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   KEY `idrol_idx` (`idrol`),
   CONSTRAINT `idrol` FOREIGN KEY (`idrol`) REFERENCES `rol` (`id`)
 );
-
 
 -- COLLABORATOR TABLE
 CREATE TABLE IF NOT EXISTS `colaborador` (
@@ -71,6 +71,7 @@ CREATE TABLE IF NOT EXISTS `colaborador` (
   `idarea` int DEFAULT NULL,
   `iddepartamento` int DEFAULT NULL,
   `idsupervisor` int DEFAULT NULL,
+  `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   KEY `idcargo_idx` (`idcargo`),
   KEY `idsupervisor_idx` (`idsupervisor`),
@@ -79,7 +80,6 @@ CREATE TABLE IF NOT EXISTS `colaborador` (
   KEY `idpuesto_idx` (`idpuesto`),
   KEY `idarea_idx` (`idarea`),
   KEY `iddepartamento_idx` (`iddepartamento`),
-
   CONSTRAINT `idcargo` FOREIGN KEY (`idcargo`) REFERENCES `cargo` (`id`),
   CONSTRAINT `idsupervisor` FOREIGN KEY (`idsupervisor`) REFERENCES `colaborador` (`id`),
   CONSTRAINT `idsede` FOREIGN KEY (`idsede`) REFERENCES `sede` (`id`),
@@ -89,31 +89,32 @@ CREATE TABLE IF NOT EXISTS `colaborador` (
   CONSTRAINT `iddepartamento` FOREIGN KEY (`iddepartamento`) REFERENCES `departamento` (`id`)
 );
 
-
-
 -- SCORE TYPE TABLE
 CREATE TABLE IF NOT EXISTS `tipo_objetivo` (
   `id` int NOT NULL AUTO_INCREMENT,
   `nombre` varchar(255) DEFAULT NULL,
   `descripcion` varchar(255) DEFAULT NULL,
+  `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
 );
 
-
 -- AIM DETAILS TABLE
 CREATE TABLE IF NOT EXISTS `objetivo_detalles` (
-   `id` int NOT NULL AUTO_INCREMENT,
-   `estado_eva1` varchar(10) DEFAULT NULL, -- EARRING / APPROVED / REFUZED / FINISHED
-   `estado_eva2` varchar(10) DEFAULT NULL, -- EARRING / APPROVED / REFUZED / FINISHED
-   `puntaje_inicial_1` INT DEFAULT NULL,
-   `puntaje_inicial_2` INT DEFAULT NULL,
-   `puntaje_1` INT DEFAULT NULL,
-   `puntaje_2` INT DEFAULT NULL,
-   `fecha_registro` DATETIME DEFAULT NULL,
-   `fecha_finalizacion` DATETIME DEFAULT NULL,
-   `fecha_vencimiento` DATETIME DEFAULT NULL,
-   `fecha_modificacion` DATETIME DEFAULT NULL,
-    PRIMARY KEY (`id`)
+  `id` int NOT NULL AUTO_INCREMENT,
+  `estado_eva1` varchar(10) DEFAULT NULL,
+  -- EARRING / APPROVED / REFUZED / FINISHED
+  `estado_eva2` varchar(10) DEFAULT NULL,
+  -- EARRING / APPROVED / REFUZED / FINISHED
+  `puntaje_inicial_1` INT DEFAULT NULL,
+  `puntaje_inicial_2` INT DEFAULT NULL,
+  `puntaje_1` INT DEFAULT NULL,
+  `puntaje_2` INT DEFAULT NULL,
+  `fecha_registro` DATETIME DEFAULT NULL,
+  `fecha_finalizacion` DATETIME DEFAULT NULL,
+  `fecha_vencimiento` DATETIME DEFAULT NULL,
+  `fecha_modificacion` DATETIME DEFAULT NULL,
+  `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
 );
 
 -- AIM TABLE
@@ -126,6 +127,7 @@ CREATE TABLE IF NOT EXISTS `objetivo` (
   `idcolaborador` INT DEFAULT NULL,
   `idtipo_objetivo` INT DEFAULT NULL,
   `idobjetivo_detalles` INT DEFAULT NULL,
+  `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   KEY `idcolaborador_idx` (`idcolaborador`),
   KEY `idobjetivo_detalles_idx` (`idobjetivo_detalles`),
@@ -134,22 +136,3 @@ CREATE TABLE IF NOT EXISTS `objetivo` (
   CONSTRAINT `idobjetivo_detalles` FOREIGN KEY (`idobjetivo_detalles`) REFERENCES `objetivo_detalles` (`id`),
   CONSTRAINT `idtipo_objetivo` FOREIGN KEY (`idtipo_objetivo`) REFERENCES `tipo_objetivo` (`id`)
 );
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

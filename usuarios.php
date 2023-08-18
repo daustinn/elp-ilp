@@ -2,8 +2,6 @@
 
 <?php
 
-include 'modelo/conexion.php';
-
 // Incluye el archivos .services.php
 include 'services/user.service.php';
 include 'services/rol.service.php';
@@ -29,12 +27,33 @@ $roles = getRoles();
     <div class="mobile-menu-overlay"></div>
 
     <!-- CONTENT PAGE START -->
+
+
     <div class="main-container">
         <div class=" pb-2">
             <div class="title ">
                 <h2 class="h3 mb-0">Buscar</h2>
             </div>
         </div>
+        <!-- Alerta de Bootstrap -->
+        <?php
+        if (isset($_SESSION['alert_type']) && isset($_SESSION['alert_message'])) {
+            echo "
+            <div class='alert alert-{$_SESSION['alert_type']} alert-dismissible fade show' role='alert'>
+                {$_SESSION['alert_message']}
+                <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+                    <span aria-hidden='true'>&times;</span>
+                </button>
+            </div>
+              ";
+
+            unset($_SESSION['alert_type']);
+            unset($_SESSION['alert_message']);
+        }
+        ?>
+
+
+
         <div class="header-search">
             <form>
                 <div class="form-group mb-0 relative">
@@ -63,11 +82,11 @@ $roles = getRoles();
                             </button>
                         </div>
                         <div class="modal-body">
-                            <form action="procesar_encuesta.php" method="post">
+                            <form action="controllers/usuario.controller.php" method="post">
                                 <div class="grid grid-cols-3 gap-3">
                                     <div class="form-group col-span-3">
                                         <label for="nombre">Rol:</label>
-                                        <select class="form-control">
+                                        <select name="rol" class="form-control">
                                             <?php
                                             if ($roles) {
                                                 foreach ($roles as $rol) {
@@ -84,12 +103,12 @@ $roles = getRoles();
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="nombre">Usuario / Correo:</label>
-                                    <input type="text" autofocus class="form-control" name="usuario" required>
+                                    <label for="usuario">Usuario / Correo:</label>
+                                    <input type="email" id="usuario" autofocus class="form-control" name="usuario" required>
                                 </div>
                                 <div class="form-group">
-                                    <label for="nombre">Contraseña:</label>
-                                    <input type="password" class="form-control" name="contraseña" required>
+                                    <label for="contraseña">Contraseña:</label>
+                                    <input type="password" value="Pontificia2023" id="contraseña" class="form-control" name="contraseña" required>
                                 </div>
                                 <div class="flex gap-2">
                                     <button type="button" class="btn btn-secondary bg-neutral-700" data-dismiss="modal">Close</button>
@@ -108,6 +127,7 @@ $roles = getRoles();
                         <th>Usuario</th>
                         <th>Contraseña</th>
                         <th>Rol</th>
+                        <th>Registro</th>
                         <th></th>
                     </tr>
                 </thead>
@@ -115,11 +135,15 @@ $roles = getRoles();
                     <?php
                     if ($users) {
                         foreach ($users as $user) {
+                            $fechaDateTime = new DateTime($user['created_at']);
+                            $fechaFormateada = $fechaDateTime->format('d \d\e F \d\e Y');
+
                             echo "<tr>";
                             echo "<td>" . $user['id'] . "</td>";
                             echo "<td class='p-1'>" . $user['usuario'] . "</td>";
                             echo "<td class='p-1'>" . $user['contraseña'] . "</td>";
                             echo "<td class='p-1'>" . $user['rol'] . "</td>";
+                            echo "<td class='p-1'>" . $fechaFormateada . "</td>";
                             echo "<td class='p-1'>
                                         <div class='flex gap-2'>
                                             <button class='btn btn-primary'>Editar</button>

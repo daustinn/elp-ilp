@@ -1,5 +1,5 @@
 <?php
-
+require_once('modelo/conexion.php');
 /**
  * Obtiene la lista de usuarios con sus roles desde la base de datos.
  *
@@ -16,10 +16,11 @@ function getUsers()
                 usuario.usuario,
                 usuario.contraseña,
                 rol.id as 'id_rol',
-                rol.nombre as 'rol'
+                rol.nombre as 'rol',
+                usuario.created_at
               FROM
                 usuario
-              INNER JOIN rol ON usuario.idrol = rol.id";
+              INNER JOIN rol ON usuario.idrol = rol.id ORDER BY created_at desc";
 
     if ($conexion) {
         // Ejecutar la consulta

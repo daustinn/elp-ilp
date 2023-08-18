@@ -1,4 +1,5 @@
 <?php
+
 // Session start
 session_start();
 
@@ -11,6 +12,8 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
 
 $fullname = $_SESSION['nombres'];
 $lastname = $_SESSION['apellidos'];
+
+setlocale(LC_TIME, 'es_ES.utf8');
 ?>
 
 
