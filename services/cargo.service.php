@@ -1,5 +1,5 @@
 <?php
-function registrarRol($nombre)
+function registrarCargo($nombre)
 {
     $conexion = connectToDatabase();
     if (!$conexion) {
@@ -7,33 +7,33 @@ function registrarRol($nombre)
     }
     // Escapar el valor del lugar para evitar inyección de SQL
     $nombre = mysqli_real_escape_string($conexion, $nombre);
-    $consulta = "INSERT INTO rol (nombre) VALUES ('$nombre')";
+    $consulta = "INSERT INTO cargo (nombre) VALUES ('$nombre')";
 
     // Ejecutar la consulta
     if (mysqli_query($conexion, $consulta)) {
-        echo "Rol registrado correctamente.";
+        echo "Cargo registrado correctamente.";
     } else {
-        echo "Error al registrar el Rol: " . mysqli_error($conexion);
+        echo "Error al registrar el cargo: " . mysqli_error($conexion);
     }
-    header('Location: ../rol.php');
+    header('Location: ../cargo.php');
     // Cerrar la conexión a la base de datos
     $conexion->close();
 }
 
 
-function obtenerRol()
+function obtenerCargo()
 {
     $conexion = connectToDatabase();
     if ($conexion) {
-        $query = "SELECT * FROM rol";
+        $query = "SELECT * FROM cargo";
         $result = $conexion->query($query);
         if ($result && $result->num_rows > 0) {
-            $rol = array();
+            $cargo = array();
             while ($row = $result->fetch_assoc()) {
-                $rol[] = $row;
+                $cargo[] = $row;
             }
             $conexion->close();
-            return $rol;
+            return $cargo;
         }
         $conexion->close();
     }
