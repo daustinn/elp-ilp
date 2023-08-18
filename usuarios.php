@@ -141,19 +141,20 @@ $roles = getRoles();
                             <td><?php echo $user['id']; ?></td>
                             <td><?php echo $user['usuario']; ?></td>
                             <td>
-                                <button data-id="<?php echo $user['id']; ?>" title="<?php echo ($user['status'] == 1) ? 'Desactivar' : 'Activar'; ?>" class="eliminarUsuario rounded-full py-1 px-2 text-white <?php echo ($user['status'] == 1) ? 'bg-green-500 hover:bg-green-600' : 'bg-red-500 hover:bg-red-600'; ?>">
+                                <button data-id="<?php echo $user['id']; ?>" title="<?php echo ($user['status'] == 1) ? 'Desactivar' : 'Activar'; ?>" class="status_user rounded-full py-1 px-2 text-white <?php echo ($user['status'] == 1) ? 'bg-green-500 hover:bg-green-600' : 'bg-red-500 hover:bg-red-600'; ?>">
                                     <?php echo ($user['status'] == 1) ? 'Activo' : 'Inactivo'; ?>
                                 </button>
                             </td>
                             <td><?php echo $user['contraseña']; ?></td>
                             <td>
-                                <select <?php if ($user['usuario'] == 'admin') echo 'disabled'; ?> name="rol" class="form-control">
+                                <select data-id="<?php echo $user['id'] ?>" <?php if ($user['usuario'] == 'admin') echo 'disabled'; ?> name="rol" class="form-control select-rol">
                                     <?php foreach ($roles as $rol) { ?>
                                         <option value="<?php echo $rol['id']; ?>" <?php if ($rol['id'] == $user['id_rol']) echo 'selected'; ?>>
                                             <?php echo $rol['descripcion']; ?>
                                         </option>
                                     <?php } ?>
                                 </select>
+                                <input type="hidden" name="update_rol" value="true">
                             </td>
 
                             <td><?php
@@ -180,7 +181,8 @@ $roles = getRoles();
     <!-- js -->
     <script>
         $(document).ready(function() {
-            $(" .eliminarUsuario").click(function() {
+            //  change user status
+            $(" .status_user").click(function() {
                 var userId = $(this).data("id");
                 var result = confirm('Estás seguro de eliminar el usuario con el id: ' + userId);
                 if (!result) return;
@@ -194,6 +196,31 @@ $roles = getRoles();
                         location.reload();
                     },
 
+                });
+            });
+
+            // change user role
+            $(".select-rol").change(function() {
+                var userId = $(this).data("id");
+                var newRoleId = $(this).val();
+
+                $.ajax({
+                    url: "controllers/usuario.controller.php", // Cambia esto a la URL de tu página
+                    method: "POST", // Puedes seguir usando POST
+                    data: {
+                        id: userId,
+                        rol: newRoleId,
+                        update_rol: true
+                    }, // Incluye el campo update_rol
+                    success: function(response) {
+                        console.log(response)
+                        // Actualizar solo la fila correspondiente en la página
+                        if (response === "success") {
+                            alert("Rol actualizado correctamente");
+                        } else {
+                            alert("Error al actualizar el rol");
+                        }
+                    },
                 });
             });
         });
