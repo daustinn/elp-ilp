@@ -11,12 +11,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $sede = $_POST["sede"];
     $puesto = $_POST["puesto"];
     $area = $_POST["area"];
-   //  registrarcolaborador($dni, $nombre, $apellido, $cargo, $usuario, $sede, $puesto, $area);
+    //  registrarcolaborador($dni, $nombre, $apellido, $cargo, $usuario, $sede, $puesto, $area);
 }
 
 //SI ELMETODO ES PUT
 if ($_SERVER["REQUEST_METHOD"] == "PUT") {
-    $id= $_PUT["id"];
+    $id = $_PUT["id"];
     $dni = $_PUT["dni"];
     $nombre = $_PUT["nombre"];
     $apellido = $_PUT["apellido"];
@@ -25,5 +25,5 @@ if ($_SERVER["REQUEST_METHOD"] == "PUT") {
     $sede = $_PUT["sede"];
     $puesto = $_PUT["puesto"];
     $area = $_PUT["area"];
-   //  actualizarcolaborador($id, $dni, $nombre, $apellido, $cargo, $usuario, $sede, $puesto, $area);
+    //  actualizarcolaborador($id, $dni, $nombre, $apellido, $cargo, $usuario, $sede, $puesto, $area);
 }

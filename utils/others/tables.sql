@@ -51,6 +51,7 @@ CREATE TABLE IF NOT EXISTS `usuario` (
   `id` int NOT NULL AUTO_INCREMENT,
   `usuario` varchar(100) NOT NULL,
   `contraseña` varchar(255) DEFAULT 'Pontificia2023',
+  `status` int DEFAULT 1,
   `idrol` int NOT NULL,
   `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
