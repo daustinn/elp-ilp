@@ -1,24 +1,4 @@
 <?php
-function registrarObjetivo($nombre, $descripcion, $porcentaje, $indicadores_logros, $idcolaborador, $idtipo_objetivo, $idobjetivo_detalles)
-{
-    $conexion = connectToDatabase();
-    if (!$conexion) {
-        die("Error al conectar con la base de datos: " . mysqli_connect_error());
-    }
-    // Escapar el valor del lugar para evitar inyección de SQL
-    $nombre = mysqli_real_escape_string($nombre, $descripcion, $porcentaje, $indicadores_logros, $idcolaborador, $idtipo_objetivo, $idobjetivo_detalles);
-    $consulta = "INSERT INTO objetivo (nombre, descripcion, porcentaje, indicadores_logros, idcolaborador, idtipo_objetivo, idobjetivo_detalles) VALUES ('$nombre, $descripcion, $porcentaje, $indicadores_logros, $idcolaborador, $idtipo_objetivo, $idobjetivo_detalles')";
-
-    // Ejecutar la consulta
-    if (mysqli_query($conexion, $consulta)) {
-        echo "Objetivo  registrado correctamente.";
-    } else {
-        echo "Error al registrar el objetivo : " . mysqli_error($conexion);
-    }
-    header('Location: ../objetivo.php');
-    // Cerrar la conexión a la base de datos
-    $conexion->close();
-}
 
 
 function obtenerObjetivo()
