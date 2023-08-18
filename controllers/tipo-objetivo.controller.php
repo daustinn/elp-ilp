@@ -5,13 +5,13 @@ include '../services/tipo-objetivo.service.php';
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $nombre = $_POST["nombre"];
     $descripcion = $_POST["descripcion"];
-   //  registrartipo-objtivo($nombre, $descripcion);
+    //  registrartipo-objtivo($nombre, $descripcion);
 }
 
 //SI ELMETODO ES PUT
 if ($_SERVER["REQUEST_METHOD"] == "PUT") {
-    $id= $_PUT["id"];
+    $id = $_PUT["id"];
     $nombre = $_PUT["nombre"];
     $descripcion = $_PUT["descripcion"];
-   //  actualizartipo-objetivo( $id, $nombre, $descripcion,);
+    //  actualizartipo-objetivo( $id, $nombre, $descripcion,);
 }

@@ -24,6 +24,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     header('Location: ../usuarios.php');
 }
 
+// SI EL MÉTODO ES DELETE
+if ($_SERVER["REQUEST_METHOD"] == "DELETE") {
+    $userId = $_REQUEST["id"];
+    $result = changeUserStatus($userId);
+}
+
 function createUser($usuario, $contraseña, $rol)
 {
     // Conectar a la base de datos
@@ -50,4 +56,28 @@ function createUser($usuario, $contraseña, $rol)
             $conexion->close();
         }
     }
+}
+
+function changeUserStatus($userId)
+{
+    echo $userId;
+
+    // Conectar a la base de datos
+    $conexion = connectToDatabase();
+
+    // Consulta preparada para cambiar el estado
+    $sql = "UPDATE usuario SET status = CASE WHEN status = 1 THEN 0 ELSE 1 END WHERE id = ?";
+
+    $stmt = $conexion->prepare($sql);
+    $stmt->bind_param("i", $userId); // Corregido aquí
+
+    if ($stmt->execute()) {
+        echo "Estado del usuario actualizado correctamente";
+    } else {
+        echo "Error al actualizar el estado del usuario: " . $stmt->error;
+    }
+
+    // Cerrar el statement y la conexión
+    $stmt->close();
+    $conexion->close();
 }

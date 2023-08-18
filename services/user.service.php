@@ -15,7 +15,9 @@ function getUsers()
                 usuario.id,
                 usuario.usuario,
                 usuario.contraseña,
+                usuario.status,
                 rol.id as 'id_rol',
+                rol.descripcion as 'descripcion',
                 rol.nombre as 'rol',
                 usuario.created_at
               FROM

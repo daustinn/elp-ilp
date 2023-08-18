@@ -26,6 +26,7 @@ function handleLoginForm()
                         colaborador.nombres, 
                         colaborador.apellidos,
                         usuario.id as 'id_usuario',
+                        usuario.status,
                         usuario.usuario,
                         rol.nombre as 'rol',
                         cargo.nombre as 'cargo',
@@ -53,6 +54,7 @@ function handleLoginForm()
                 $_SESSION['apellidos'] = $row['apellidos'];
                 $_SESSION['id_usuario'] = $row['id_usuario'];
                 $_SESSION['usuario'] = $row['usuario'];
+                $_SESSION['status'] = $row['status'];
                 $_SESSION['rol'] = $row['rol'];
                 $_SESSION['cargo'] = $row['cargo'];
                 $_SESSION['sede'] = $row['sede'];
