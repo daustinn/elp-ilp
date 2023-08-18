@@ -1,5 +1,5 @@
 <?php
-function registrarRol($nombre)
+function registrarPuesto($nombre)
 {
     $conexion = connectToDatabase();
     if (!$conexion) {
@@ -7,33 +7,33 @@ function registrarRol($nombre)
     }
     // Escapar el valor del lugar para evitar inyección de SQL
     $nombre = mysqli_real_escape_string($conexion, $nombre);
-    $consulta = "INSERT INTO rol (nombre) VALUES ('$nombre')";
+    $consulta = "INSERT INTO puesto (nombre) VALUES ('$nombre')";
 
     // Ejecutar la consulta
     if (mysqli_query($conexion, $consulta)) {
-        echo "Rol registrado correctamente.";
+        echo "Puesto registrado correctamente.";
     } else {
-        echo "Error al registrar el Rol: " . mysqli_error($conexion);
+        echo "Error al registrar el puesto: " . mysqli_error($conexion);
     }
-    header('Location: ../rol.php');
+    header('Location: ../puesto.php');
     // Cerrar la conexión a la base de datos
     $conexion->close();
 }
 
 
-function obtenerRol()
+function obtenerPuesto()
 {
     $conexion = connectToDatabase();
     if ($conexion) {
-        $query = "SELECT * FROM rol";
+        $query = "SELECT * FROM puesto";
         $result = $conexion->query($query);
         if ($result && $result->num_rows > 0) {
-            $rol = array();
+            $area = array();
             while ($row = $result->fetch_assoc()) {
-                $rol[] = $row;
+                $area[] = $row;
             }
             $conexion->close();
-            return $rol;
+            return $area;
         }
         $conexion->close();
     }
