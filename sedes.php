@@ -9,7 +9,7 @@ include 'modelo/conexion.php';
 include 'services/sede.service.php';
 
 // Obtiene las sedes desde la base de datos
-$sedes = obtenerSedes();
+$sedes = GetSedes();
 ?>
 
 <body>
