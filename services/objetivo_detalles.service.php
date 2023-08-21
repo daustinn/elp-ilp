@@ -2,7 +2,7 @@
 
 
 
-function  obtenerObjetivo_detalles()
+function  GetObjetivo_detalles()   
 {
     $conexion = connectToDatabase();
     if ($conexion) {

@@ -1,7 +1,7 @@
 <?php
 
 
-function obtenerTipo_objetivo()
+function GetTipo_objetivo()
 {
     $conexion = connectToDatabase();
     if ($conexion) {

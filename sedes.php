@@ -6,9 +6,13 @@ include 'services/sede.service.php';
 
 
 // Obtiene las sedes desde la base de datos
+<<<<<<< HEAD
 $sedes = getSedes();
 
 
+=======
+$sedes = GetSedes();
+>>>>>>> 42aca6e4213e54ac0fd7e5932b897faf1de89615
 ?>
 
 
