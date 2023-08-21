@@ -10,6 +10,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 //SI ELMETODO ES PUT
 if ($_SERVER["REQUEST_METHOD"] == "PUT") {
     $id = $_PUT["id"];
-    $lugar = $_PUT["usuario"];
+    $lugar = $_PUT["lugar"];
     //  actualizarsede( $id, $lugar);
 }

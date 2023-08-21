@@ -9,7 +9,7 @@ include 'modelo/conexion.php';
 include 'services/sede.service.php';
 
 // Obtiene las sedes desde la base de datos
-$sedes = GetSedes();
+ $sedes = GetSedes();
 ?>
 
 <body>
@@ -64,10 +64,10 @@ $sedes = GetSedes();
                     <tbody>
                         <?php
                         if ($sedes) {
-                            foreach ($sedes as $sede) {
+                            foreach ($sedes as $sedes) {
                                 echo "<tr>";
-                                echo "<td>" . $sede['id'] . "</td>";
-                                echo "<td class='table-plus'>" . $sede['lugar'] . "</td>";
+                                echo "<td>" . $sedes['id'] . "</td>";
+                                echo "<td class='table-plus'>" . $sedes['lugar'] . "</td>";
                                 echo "</tr>";
                             }
                         } else {
