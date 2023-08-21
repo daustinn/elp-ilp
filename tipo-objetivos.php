@@ -6,7 +6,7 @@ include 'services/tipo_objetivo.service.php';
 
 
 // Obtiene las sedes desde la base de datos
-$tipo_objetivo = GetTipo_objetivo();
+$Tipo_objetivos = GetTipo_objetivos();
 
 
 ?>
@@ -123,7 +123,7 @@ $tipo_objetivo = GetTipo_objetivo();
             </thead>
             <tbody>
             <?php if ($Tipo_objetivos) { ?>
-                    <?php foreach ( $Tipo_objetivos as $Tipo_objetivo) { ?>
+                    <?php foreach ($Tipo_objetivos as $Tipo_objetivo) { ?>
                         <tr>
                             <td><?php echo $Tipo_objetivo['id']; ?></td>
                             <td><?php echo $Tipo_objetivo['nombre']; ?></td>
