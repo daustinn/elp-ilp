@@ -1,16 +1,22 @@
-<!-- include component head -->
-<?php include 'components/head-logged-in.php' ?>
-
 <?php
 
-include 'modelo/conexion.php';
+// Incluye el archivos .services.php
+include 'services/area.service.php';
 
-// Incluye el archivo sede.service.php donde está definida la función obtenerSedes()
-include 'services/sede.service.php';
+
 
 // Obtiene las sedes desde la base de datos
- $sedes = GetSedes();
+$areas = getAreas();
+
+
 ?>
+
+
+
+
+
+<!-- include component head -->
+<?php include 'components/head-logged-in.php' ?>
 
 <body>
     <div class="pre-loader">
@@ -38,46 +44,106 @@ include 'services/sede.service.php';
 
     <!-- CONTENT PAGE START -->
     <div class="main-container">
-        <div class="xs-pd-20-10 pd-ltr-20">
-            <div class="title">
-                <h2 class="h3 mb-0">Sedes</h2>
+        <div class="pb-2">
+            <h2 class="h3 mb-0 font-bold text-3xl">Administracion de Sedes</h2>
+        </div>
+        <!-- Alerta de Bootstrap -->
+        <?php
+        if (isset($_SESSION['alert_type']) && isset($_SESSION['alert_message'])) {
+            echo "
+            <div class='alert alert-{$_SESSION['alert_type']} alert-dismissible fade show' role='alert'>
+                {$_SESSION['alert_message']}
+                <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+                    <span aria-hidden='true'>&times;</span>
+                </button>
             </div>
-            <div class="flex gap-2 item-center">
-                <form class="" action="controllers/sede.controller.php" method="post">
-                    <div class="bg-white p-4 max-h-max rounded-2xl w-[300px]">
-                        <div class="form-group">
-                            <label for="nombre">Sede:</label>
-                            <input type="text" class="form-control" name="lugar" required>
-                        </div>
-                        <div class="form-btn-container">
-                            <button type="submit" class="btn btn-primary bg-blue-500 w-full">Guardar</button>
-                        </div>
+              ";
+
+            unset($_SESSION['alert_type']);
+            unset($_SESSION['alert_message']);
+        }
+        ?>
+
+        <!-- Button trigger modal -->
+        <div class="flex item-center gap-4 p-2">
+            <div class="w-[300px] ">
+                <button type="button" class="btn btn-primary bg-blue-600 text-white rounded-lg w-full h-10" data-toggle="modal" data-target="#exampleModal">
+                    Crear nuevo
+                </button>
+            </div>
+            <form class="w-full">
+                <div class="form-group mb-0 relative">
+                    <span class="absolute left-2 top-2">
+                        <i class="dw dw-search2 search-icon"></i>
+                    </span>
+                    <input type="text" class="pl-8 form-control search-input" placeholder="Buscar" />
+                </div>
+            </form>
+        </div>
+        <!-- <div id="mensaje" class="alert"></div> -->
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Registrar nueva Area</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
                     </div>
-                </form>
-                <table class="table ml-2 hover multiple-select-row data-table-export nowrap">
-                    <thead>
-                        <tr>
-                            <th class="table-plus datatable-nosort">Id</th>
-                            <th>Lugar</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php
-                        if ($sedes) {
-                            foreach ($sedes as $sedes) {
-                                echo "<tr>";
-                                echo "<td>" . $sedes['id'] . "</td>";
-                                echo "<td class='table-plus'>" . $sedes['lugar'] . "</td>";
-                                echo "</tr>";
-                            }
-                        } else {
-                            echo "<tr><td colspan='2'>No hay sedes registradas.</td></tr>";
-                        }
-                        ?>
-                    </tbody>
-                </table>
+                    <div class="modal-body">
+                        <form action="controllers/usuario.controller.php" method="post">
+                            <div class="grid grid-cols-3 gap-3">
+                                <div class="form-group col-span-3">
+                                    <label for="nombre">Area</label>
+                                    <input type="email" id="" autofocus class="form-control" name="" required>
+                                </div>
+                            </div>
+                          
+                            
+                            <div class="flex gap-2">
+                                <button type="button" class="btn btn-secondary bg-neutral-700" data-dismiss="modal">Close</button>
+                                <input type="submit" class="bg-blue-600 text-white rounded-lg w-full h-10" value="Registrar Area">
+                            </div>
+                        </form>
+                    </div>
+
+                </div>
             </div>
         </div>
+        <table class="table ml-2 hover multiple-select-row data-table-export nowrap">
+            <thead>
+                <tr>
+                    <th class=" datatable-nosort">Id</th>
+                    <th>Nombre</th>
+                    <th>Registro</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+            <?php if ($areas) { ?>
+                    <?php foreach ($areas as $area) { ?>
+                        <tr>
+                            <td><?php echo $area['id']; ?></td>
+                            <td><?php echo $area['nombre']; ?></td>
+                           
+                          
+
+                            <td><?php
+
+                                $fechaDateTime = new DateTime($area['created_at']);
+                                $fechaFormateada = $fechaDateTime->format('d \d\e F \d\e Y');
+                                echo $fechaFormateada
+                                ?></td>
+                        </tr>
+                    <?php } ?>
+                <?php } else { ?>
+                    <tr>
+                        <td colspan='2'>No hay sedes registradas.</td>
+                    </tr>
+                <?php } ?>
+            </tbody>
+        </table>
     </div>
     <!-- CONTENT PAGE END  -->
 
