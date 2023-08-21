@@ -1,5 +1,5 @@
 <?php
-
+require_once('modelo/conexion.php');
 
 function GetTipo_objetivo()
 {
