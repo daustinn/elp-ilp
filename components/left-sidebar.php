@@ -51,7 +51,7 @@ $rol = $_SESSION['rol'];
                         </a>
                     </li>
                     <li>
-                        <a href="sitemap.html" class="dropdown-toggle no-arrow">
+                        <a href="colaborador.php" class="dropdown-toggle no-arrow">
                             <span class="micon bi bi-diagram-3"></span><span class="mtext">Colaboradores</span>
                         </a>
                     </li>

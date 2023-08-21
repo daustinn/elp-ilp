@@ -1,7 +1,9 @@
 <?php
+require_once('modelo/conexion.php');
 
 
-function obtenerDepartamento()
+
+function getDepartamentos()
 {
     $conexion = connectToDatabase();
     if ($conexion) {

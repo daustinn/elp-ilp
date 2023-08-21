@@ -1,12 +1,17 @@
 <?php
 
 // Incluye el archivos .services.php
-include 'services/rol.service.php';
+include 'services/colaborador.service.php';
+include 'services/user.service.php';
 
 
 
 // Obtiene las sedes desde la base de datos
-$roles = getRoles();
+$colaboradores = getColaboradores();
+$users = getUsers();
+
+
+
 
 
 ?>
@@ -45,7 +50,7 @@ $roles = getRoles();
     <!-- CONTENT PAGE START -->
     <div class="main-container">
         <div class="pb-2">
-            <h2 class="h3 mb-0 font-bold text-3xl">Administracion de Roles</h2>
+            <h2 class="h3 mb-0 font-bold text-3xl">Administracion de Colaboradores</h2>
         </div>
         <!-- Alerta de Bootstrap -->
         <?php
@@ -86,7 +91,7 @@ $roles = getRoles();
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Registrar Roles</h5>
+                        <h5 class="modal-title" id="exampleModalLabel">Registrar a un Colaboradores</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -95,7 +100,7 @@ $roles = getRoles();
                         <form action="controllers/usuario.controller.php" method="post">
                             <div class="grid grid-cols-3 gap-3">
                                 <div class="form-group col-span-3">
-                                    <label for="nombre">Rol</label>
+                                    <label for="nombre">Area</label>
                                     <input type="email" id="" autofocus class="form-control" name="" required>
                                 </div>
                             </div>
@@ -103,7 +108,7 @@ $roles = getRoles();
                             
                             <div class="flex gap-2">
                                 <button type="button" class="btn btn-secondary bg-neutral-700" data-dismiss="modal">Close</button>
-                                <input type="submit" class="bg-blue-600 text-white rounded-lg w-full h-10" value="Registrar Rol">
+                                <input type="submit" class="bg-blue-600 text-white rounded-lg w-full h-10" value="Registrar Area">
                             </div>
                         </form>
                     </div>
@@ -115,25 +120,40 @@ $roles = getRoles();
             <thead>
                 <tr>
                     <th class=" datatable-nosort">Id</th>
-                    <th>Nombre</th>
-                    <th>descripcion</th>
+                    <th>DNI</th>
+                    <th>Nombres</th>
+                    <th>Apellidos</th>
+                    <th>Usuario</th>
+                    <th>Cargo</th>
+                    <th>Sede</th>
+                    <th>Puesto</th>
+                    <th>area</th>
+                    <th>Departamento</th>
+                    <th>Supervisor</th>
                     <th>Registro</th>
                     <th></th>
                 </tr>
             </thead>
             <tbody>
-            <?php if ($roles) { ?>
-                    <?php foreach ($roles as $rol) { ?>
+            <?php if ($colaboradores) { ?>
+                    <?php foreach ($colaboradores as $colaborador) { ?>
                         <tr>
-                            <td><?php echo $rol['id']; ?></td>
-                            <td><?php echo $rol['nombre']; ?></td>
-                            <td><?php echo $rol['descripcion']; ?></td>
+                            <td><?php echo $colaborador['id']; ?></td>
+                            <td><?php echo $colaborador['dni']; ?></td>
+                            <td><?php echo $colaborador['nombres']; ?></td>
+                            <td><?php echo $colaborador['apellidos']; ?></td>
+                            <td><?php echo $colaborador['idusuario'] ; ?></td>
                            
-                          
+                            <td><?php echo $colaborador['idcargo']; ?></td>
+                            <td><?php echo $colaborador['idsede']; ?></td>
+                            <td><?php echo $colaborador['idpuesto']; ?></td>
+                            <td><?php echo $colaborador['idarea']; ?></td>
+                            <td><?php echo $colaborador['iddepartamento']; ?></td>
+                            <td><?php echo $colaborador['idsupervisor']; ?></td>
 
                             <td><?php
 
-                                $fechaDateTime = new DateTime($rol['created_at']);
+                                $fechaDateTime = new DateTime($colaborador['created_at']);
                                 $fechaFormateada = $fechaDateTime->format('d \d\e F \d\e Y');
                                 echo $fechaFormateada
                                 ?></td>
@@ -141,7 +161,7 @@ $roles = getRoles();
                     <?php } ?>
                 <?php } else { ?>
                     <tr>
-                        <td colspan='2'>No hay roles registradas.</td>
+                        <td colspan='2'>No hay sedes registradas.</td>
                     </tr>
                 <?php } ?>
             </tbody>

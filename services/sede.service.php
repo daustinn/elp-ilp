@@ -3,19 +3,19 @@ require_once('modelo/conexion.php');
 
 
 
-function getColaboradores()
+function getSedes()
 {
     $conexion = connectToDatabase();
     if ($conexion) {
-        $query = "SELECT * FROM colaborador";
+        $query = "SELECT * FROM sede";
         $result = $conexion->query($query);
         if ($result && $result->num_rows > 0) {
-            $colaborador = array();
+            $sede = array();
             while ($row = $result->fetch_assoc()) {
-                $colaborador[] = $row;
+                $sede[] = $row;
             }
             $conexion->close();
-            return $colaborador;
+            return $sede;
         }
         $conexion->close();
     }

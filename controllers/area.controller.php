@@ -1,15 +1,17 @@
 <?php
-include '../services/sede.service.php';
+include '../services/area.service.php';
 
 //SI ELMETODO ES POST
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $lugar = $_POST["lugar"];
+    $area = $_POST["nombre"];
     //  registrarsede($lugar);
 }
 
 //SI ELMETODO ES PUT
 if ($_SERVER["REQUEST_METHOD"] == "PUT") {
     $id = $_PUT["id"];
-    $lugar = $_PUT["lugar"];
+    $area = $_PUT["nombre"];
     //  actualizarsede( $id, $lugar);
 }
+
+
