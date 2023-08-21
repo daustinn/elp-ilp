@@ -7,7 +7,7 @@ function getSedes()
 {
     $conexion = connectToDatabase();
     if ($conexion) {
-        $query = "SELECT * FROM sedes";
+        $query = "SELECT * FROM sede";
         $result = $conexion->query($query);
         if ($result && $result->num_rows > 0) {
             $sedes = array();

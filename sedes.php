@@ -1,12 +1,12 @@
 <?php
 
 // Incluye el archivos .services.php
-include 'services/area.service.php';
+include 'services/sede.service.php';
 
 
 
 // Obtiene las sedes desde la base de datos
-$areas = getAreas();
+$sedes = getSedes();
 
 
 ?>
@@ -99,15 +99,14 @@ $areas = getAreas();
                                     <input type="email" id="" autofocus class="form-control" name="" required>
                                 </div>
                             </div>
-                          
-                            
+
+
                             <div class="flex gap-2">
                                 <button type="button" class="btn btn-secondary bg-neutral-700" data-dismiss="modal">Close</button>
                                 <input type="submit" class="bg-blue-600 text-white rounded-lg w-full h-10" value="Registrar Area">
                             </div>
                         </form>
                     </div>
-
                 </div>
             </div>
         </div>
@@ -121,17 +120,14 @@ $areas = getAreas();
                 </tr>
             </thead>
             <tbody>
-            <?php if ($areas) { ?>
-                    <?php foreach ($areas as $area) { ?>
+                <?php if ($sedes) { ?>
+                    <?php foreach ($sedes as $sede) { ?>
                         <tr>
-                            <td><?php echo $area['id']; ?></td>
-                            <td><?php echo $area['nombre']; ?></td>
-                           
-                          
-
+                            <td><?php echo $sede['id']; ?></td>
+                            <td><?php echo $sede['lugar']; ?></td>
                             <td><?php
 
-                                $fechaDateTime = new DateTime($area['created_at']);
+                                $fechaDateTime = new DateTime($sede['created_at']);
                                 $fechaFormateada = $fechaDateTime->format('d \d\e F \d\e Y');
                                 echo $fechaFormateada
                                 ?></td>
