@@ -11,5 +11,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 if ($_SERVER["REQUEST_METHOD"] == "PUT") {
     $id = $_PUT["id"];
     $nombre = $_PUT["nombre"];
+    $descripcion = $_PUT["descripcion"];
     //  actualizarrol( $id, $nombre);
 }

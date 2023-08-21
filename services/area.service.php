@@ -3,19 +3,19 @@ require_once('modelo/conexion.php');
 
 
 
-function getColaboradores()
+function getAreas()
 {
     $conexion = connectToDatabase();
     if ($conexion) {
-        $query = "SELECT * FROM colaborador";
+        $query = "SELECT * FROM area";
         $result = $conexion->query($query);
         if ($result && $result->num_rows > 0) {
-            $colaborador = array();
+            $area = array();
             while ($row = $result->fetch_assoc()) {
-                $colaborador[] = $row;
+                $area[] = $row;
             }
             $conexion->close();
-            return $colaborador;
+            return $area;
         }
         $conexion->close();
     }
