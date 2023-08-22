@@ -1,36 +1,37 @@
 <?php
 require_once('modelo/conexion.php');
 
-
-function getRoles()
+// FUNCION DE OBTENER TODOS LOS DATOS
+function getTipo_objetivos()
 {
     $conexion = connectToDatabase();
     if ($conexion) {
-        $query = "SELECT * FROM rol ORDER BY created_at desc";
+        $query = "SELECT * FROM tipo_objetivo ORDER BY created_at desc";
         $result = $conexion->query($query);
         if ($result && $result->num_rows > 0) {
-            $rol = array();
+            $tipo_objetivo = array();
             while ($row = $result->fetch_assoc()) {
-                $rol[] = $row;
+                $tipo_objetivo[] = $row;
             }
             $conexion->close();
-            return $rol;
+            return $tipo_objetivo;
         }
         $conexion->close();
     }
     return false;
 }
 
-function getRolById($id)
+// FUNCION DE OBTENER UN SOLO DATO POR ID
+function getTipoObjetivoById($id)
 {
     $conexion = connectToDatabase();
     if ($conexion) {
-        $query = "SELECT * FROM rol WHERE id = '$id'"; // Cambio en la consulta SQL
+        $query = "SELECT * FROM tipo_objetivo WHERE id = '$id'"; // Cambio en la consulta SQL
         $result = $conexion->query($query);
         if ($result && $result->num_rows > 0) {
-            $rol = $result->fetch_assoc(); // Obtén el primer registro
+            $tipo_objetivo = $result->fetch_assoc(); // Obtén el primer registro
             $conexion->close();
-            return $rol;
+            return $tipo_objetivo;
         }
         $conexion->close();
     }

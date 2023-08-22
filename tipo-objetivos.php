@@ -1,12 +1,12 @@
 <?php
 
 // Incluye el archivos .services.php
-include 'services/tipo_objetivo.service.php';
+include 'services/tipo-objetivo.service.php';
 
 
 
 // Obtiene las sedes desde la base de datos
-$Tipo_objetivos = GetTipo_objetivos();
+$tipo_objetivos = getTipo_objetivos();
 
 
 ?>
@@ -19,19 +19,7 @@ $Tipo_objetivos = GetTipo_objetivos();
 <?php include 'components/head-logged-in.php' ?>
 
 <body>
-    <div class="pre-loader">
-        <div class="pre-loader-box">
-            <div class="loader-logo">
-                <!-- <img src="vendors/images/deskapp-logo.svg" alt="" /> -->
-                <img src="src/images/logo_elp.gif" class="w-40" alt="">
-            </div>
-            <div class="loader-progress" id="progress_div">
-                <div class="bar" id="bar1"></div>
-            </div>
-            <div class="percent" id="percent1">0%</div>
-            <div class=" text-sm text-center animation-pulse">Cargando...</div>
-        </div>
-    </div>
+
 
 
     <!-- include component nav -->
@@ -45,7 +33,7 @@ $Tipo_objetivos = GetTipo_objetivos();
     <!-- CONTENT PAGE START -->
     <div class="main-container">
         <div class="pb-2">
-            <h2 class="h3 mb-0 font-bold text-3xl">Administracion de Objetivos</h2>
+            <h2 class="h3 mb-0 font-bold text-3xl">Administracion de tipos de objetivos</h2>
         </div>
         <!-- Alerta de Bootstrap -->
         <?php
@@ -86,24 +74,26 @@ $Tipo_objetivos = GetTipo_objetivos();
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Registrar Tipo de objetivos</h5>
+                        <h5 class="modal-title" id="exampleModalLabel">Registrar nuevo tipo</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
                     <div class="modal-body">
-                        <form action="controllers/usuario.controller.php" method="post">
+                        <form action="controllers/tipo-objetivo.controller.php" method="post">
                             <div class="grid grid-cols-3 gap-3">
                                 <div class="form-group col-span-3">
-                                    <label for="nombre">Tipo Objetivo</label>
-                                    <input type="email" id="" autofocus class="form-control" name="" required>
+                                    <label for="nombre">Nombre</label>
+                                    <input type="text" id="nombre" autofocus class="form-control" name="nombre" required>
+                                </div>
+                                <div class="form-group col-span-3">
+                                    <label for="descripcion">Descripcion</label>
+                                    <textarea type="text" id="descripcion" class="form-control" name="descripcion"></textarea>
                                 </div>
                             </div>
-                          
-                            
                             <div class="flex gap-2">
-                                <button type="button" class="btn btn-secondary bg-neutral-700" data-dismiss="modal">Close</button>
-                                <input type="submit" class="bg-blue-600 text-white rounded-lg w-full h-10" value="Registrar Rol">
+                                <button type="button" class="btn btn-secondary bg-neutral-700" data-dismiss="modal">Cerrar</button>
+                                <input type="submit" class="bg-blue-600 text-white rounded-lg w-full h-10" value="Registrar">
                             </div>
                         </form>
                     </div>
@@ -122,21 +112,21 @@ $Tipo_objetivos = GetTipo_objetivos();
                 </tr>
             </thead>
             <tbody>
-            <?php if ($Tipo_objetivos) { ?>
-                    <?php foreach ($Tipo_objetivos as $Tipo_objetivo) { ?>
+                <?php if ($tipo_objetivos) { ?>
+                    <?php foreach ($tipo_objetivos as $tipo_objetivo) { ?>
                         <tr>
-                            <td><?php echo $Tipo_objetivo['id']; ?></td>
-                            <td><?php echo $Tipo_objetivo['nombre']; ?></td>
-                            <td><?php echo $Tipo_objetivo['descripcion']; ?></td>
-                           
-                          
-
+                            <td><?php echo $tipo_objetivo['id']; ?></td>
+                            <td><?php echo $tipo_objetivo['nombre']; ?></td>
+                            <td><?php echo $tipo_objetivo['descripcion']; ?></td>
                             <td><?php
 
-                                $fechaDateTime = new DateTime($rol['created_at']);
+                                $fechaDateTime = new DateTime($tipo_objetivo['created_at']);
                                 $fechaFormateada = $fechaDateTime->format('d \d\e F \d\e Y');
                                 echo $fechaFormateada
                                 ?></td>
+                            <td>
+                                <a class="btn btn-primary" href="tipo-objetivo-edicion.php?id=<?php echo $tipo_objetivo['id']; ?>">Editar</a>
+                            </td>
                         </tr>
                     <?php } ?>
                 <?php } else { ?>
@@ -163,4 +153,4 @@ $Tipo_objetivos = GetTipo_objetivos();
     <script src="vendors/scripts/dashboard3.js"></script>
 </body>
 
-</html> 
+</html>

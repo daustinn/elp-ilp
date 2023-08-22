@@ -19,20 +19,6 @@ $roles = getRoles();
 <?php include 'components/head-logged-in.php' ?>
 
 <body>
-    <div class="pre-loader">
-        <div class="pre-loader-box">
-            <div class="loader-logo">
-                <!-- <img src="vendors/images/deskapp-logo.svg" alt="" /> -->
-                <img src="src/images/logo_elp.gif" class="w-40" alt="">
-            </div>
-            <div class="loader-progress" id="progress_div">
-                <div class="bar" id="bar1"></div>
-            </div>
-            <div class="percent" id="percent1">0%</div>
-            <div class=" text-sm text-center animation-pulse">Cargando...</div>
-        </div>
-    </div>
-
 
     <!-- include component nav -->
     <?php include 'components/nav.php' ?>
@@ -86,23 +72,27 @@ $roles = getRoles();
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Registrar Roles</h5>
+                        <h5 class="modal-title" id="exampleModalLabel">Registrar nuevo Rol</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
                     <div class="modal-body">
-                        <form action="controllers/usuario.controller.php" method="post">
-                            <div class="grid grid-cols-3 gap-3">
+                        <form action="controllers/rol.controller.php" method="post">
+                            <div class="grid grid-cols-3 gap-1">
                                 <div class="form-group col-span-3">
-                                    <label for="nombre">Rol</label>
-                                    <input type="email" id="" autofocus class="form-control" name="" required>
+                                    <label for="nombre">Nombre</label>
+                                    <input type="text" id="nombre" autofocus class="form-control" name="nombre" required />
+                                </div>
+                                <div class="form-group col-span-3">
+                                    <label for="descripcion">Descipción</label>
+                                    <textarea type="text" rows="3" id="descripcion" class="form-control" name="descripcion" required></textarea>
                                 </div>
                             </div>
-                          
-                            
+
+
                             <div class="flex gap-2">
-                                <button type="button" class="btn btn-secondary bg-neutral-700" data-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-secondary bg-neutral-700 h-10" data-dismiss="modal">Cerrar</button>
                                 <input type="submit" class="bg-blue-600 text-white rounded-lg w-full h-10" value="Registrar Rol">
                             </div>
                         </form>
@@ -111,32 +101,32 @@ $roles = getRoles();
                 </div>
             </div>
         </div>
+
         <table class="table ml-2 hover multiple-select-row data-table-export nowrap">
             <thead>
                 <tr>
                     <th class=" datatable-nosort">Id</th>
                     <th>Nombre</th>
-                    <th>descripcion</th>
+                    <th>Descripcion</th>
                     <th>Registro</th>
                     <th></th>
                 </tr>
             </thead>
             <tbody>
-            <?php if ($roles) { ?>
+                <?php if ($roles) { ?>
                     <?php foreach ($roles as $rol) { ?>
                         <tr>
                             <td><?php echo $rol['id']; ?></td>
                             <td><?php echo $rol['nombre']; ?></td>
                             <td><?php echo $rol['descripcion']; ?></td>
-                           
-                          
-
                             <td><?php
-
                                 $fechaDateTime = new DateTime($rol['created_at']);
                                 $fechaFormateada = $fechaDateTime->format('d \d\e F \d\e Y');
                                 echo $fechaFormateada
                                 ?></td>
+                            <td>
+                                <a class="btn btn-primary" href="rol-edicion.php?id=<?php echo $rol['id']; ?>">Editar</a>
+                            </td>
                         </tr>
                     <?php } ?>
                 <?php } else { ?>
@@ -148,6 +138,7 @@ $roles = getRoles();
         </table>
     </div>
     <!-- CONTENT PAGE END  -->
+
 
 
     <!-- js -->

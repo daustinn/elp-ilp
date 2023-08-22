@@ -14,47 +14,48 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $nombre = $_POST["nombre"];
         $descripcion = $_POST["descripcion"];
         // Realizar la actualización usando la función actualizarrol()
-        $result = updateTipoObjetivo($id, $nombre, $descripcion);
+        $result = updateRol($id, $nombre, $descripcion);
         if ($result === true) {
             $_SESSION['alert_type'] = 'success';
-            $_SESSION['alert_message'] = "Tipo de objetivo <strong>$nombre</strong> actualizado correctamente.";
+            $_SESSION['alert_message'] = "Rol <strong>$nombre</strong> actualizado correctamente.";
         } else {
             $_SESSION['alert_type'] = 'danger';
             $_SESSION['alert_message'] = $result;
         }
-        header('Location: ../tipo-objetivos.php');
+        header('Location: ../roles.php');
     }
     //POST 
     else {
         $nombre = $_POST["nombre"];
         $descripcion = $_POST["descripcion"];
-        $result = createTipoObjetivo($nombre, $descripcion);
+
+        $result = createRol($nombre, $descripcion);
         if ($result === true) {
             $_SESSION['alert_type'] = 'success';
-            $_SESSION['alert_message'] = "Tipo de objetivo <strong>$nombre</strong> creado exitosamente.";
+            $_SESSION['alert_message'] = "Rol <strong>$nombre</strong> creado exitosamente.";
         } else {
             $_SESSION['alert_type'] = 'danger';
             $_SESSION['alert_message'] = $result;
         }
-        header('Location: ../tipo-objetivos.php');
+        header('Location: ../roles.php');
     }
 }
 
-function createTipoObjetivo($nombre, $descripcion)
+function createRol($nombre, $descripcion)
 {
     // Conectar a la base de datos
     $conexion = connectToDatabase();
 
-    // Verificar si el Tipo objetivo ya existe por su nombre
-    $query_check = "SELECT id FROM tipo_objetivo WHERE nombre = '$nombre'";
+    // Verificar si el rol ya existe por su nombre
+    $query_check = "SELECT id FROM rol WHERE nombre = '$nombre'";
     $result_check = $conexion->query($query_check);
 
     if ($result_check->num_rows > 0) {
-        // Tipo objetivo ya existe, retornar un mensaje de error
-        return "Ya existe un tipo con el nombre <strong>$nombre</strong>.";
+        // Rol ya existe, retornar un mensaje de error
+        return "Ya existe un rol con el nombre <strong>$nombre</strong>.";
     } else {
-        // Tipo objetivo no existe, proceder con la inserción
-        $query_insert = "INSERT INTO tipo_objetivo (nombre, descripcion) VALUES ('$nombre', '$descripcion')";
+        // Rol no existe, proceder con la inserción
+        $query_insert = "INSERT INTO rol (nombre, descripcion) VALUES ('$nombre', '$descripcion')";
         if ($conexion) {
             // Ejecutar la consulta
             if ($conexion->query($query_insert) === TRUE) {
@@ -68,21 +69,21 @@ function createTipoObjetivo($nombre, $descripcion)
     }
 }
 
-function updateTipoObjetivo($id, $nuevoNombre, $nuevaDescripcion)
+function updateRol($id, $nuevoNombre, $nuevaDescripcion)
 {
     // Conectar a la base de datos
     $conexion = connectToDatabase();
 
-    // Verificar si el Tipo objetivo ya existe por su ID
-    $query_check = "SELECT id FROM tipo_objetivo WHERE id = '$id'";
+    // Verificar si el rol ya existe por su ID
+    $query_check = "SELECT id FROM rol WHERE id = '$id'";
     $result_check = $conexion->query($query_check);
 
     if ($result_check->num_rows === 0) {
-        // Tipo objetivo no existe, retornar un mensaje de error
-        return "El Tipo de objetivo con el ID <strong>$id</strong> no existe.";
+        // Rol no existe, retornar un mensaje de error
+        return "El rol con el ID <strong>$id</strong> no existe.";
     } else {
-        // Tipo objetivo existe, proceder con la actualización
-        $query_update = "UPDATE tipo_objetivo SET nombre = '$nuevoNombre', descripcion = '$nuevaDescripcion' WHERE id = '$id'";
+        // Rol existe, proceder con la actualización
+        $query_update = "UPDATE rol SET nombre = '$nuevoNombre', descripcion = '$nuevaDescripcion' WHERE id = '$id'";
         if ($conexion) {
             // Ejecutar la consulta
             if ($conexion->query($query_update) === TRUE) {

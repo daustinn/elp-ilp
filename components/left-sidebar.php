@@ -17,7 +17,7 @@ $rol = $_SESSION['rol'];
         <div class="sidebar-menu">
             <ul id="accordion-menu">
                 <li class="dropdown">
-                    <a href="index.php" class="dropdown-toggle no-arrow">
+                    <a href="/" class="dropdown-toggle no-arrow">
                         <span class="micon bi bi-house"></span><span class="mtext">Inicio</span>
                     </a>
                 </li>
