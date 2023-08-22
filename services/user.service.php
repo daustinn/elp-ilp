@@ -22,7 +22,7 @@ function getUsers()
                 usuario.created_at
               FROM
                 usuario
-              INNER JOIN rol ON usuario.idrol = rol.id ORDER BY created_at desc";
+              INNER JOIN rol ON usuario.idrol = rol.id ORDER BY id desc";
 
     if ($conexion) {
         // Ejecutar la consulta
