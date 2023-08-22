@@ -141,7 +141,7 @@ $roles = getRoles();
                             <td><?php echo $user['id']; ?></td>
                             <td><?php echo $user['usuario']; ?></td>
                             <td>
-                                <button data-id="<?php echo $user['id']; ?>" title="<?php echo ($user['status'] == 1) ? 'Desactivar' : 'Activar'; ?>" class="status_user rounded-full py-1 px-2 text-white <?php echo ($user['status'] == 1) ? 'bg-green-500 hover:bg-green-600' : 'bg-red-500 hover:bg-red-600'; ?>">
+                                <button <?php if ($user['usuario'] == 'admin') echo 'disabled'; ?> data-id="<?php echo $user['id']; ?>" title="<?php echo ($user['status'] == 1) ? 'Desactivar' : 'Activar'; ?>" class="status_user rounded-lg py-1 px-2 text-white <?php echo ($user['status'] == 1) ? 'bg-green-600 hover:bg-green-500' : 'bg-red-500 hover:bg-red-600'; ?>">
                                     <?php echo ($user['status'] == 1) ? 'Activo' : 'Inactivo'; ?>
                                 </button>
                             </td>
@@ -156,13 +156,15 @@ $roles = getRoles();
                                 </select>
                                 <input type="hidden" name="update_rol" value="true">
                             </td>
-
                             <td><?php
 
                                 $fechaDateTime = new DateTime($user['created_at']);
                                 $fechaFormateada = $fechaDateTime->format('d \d\e F \d\e Y');
                                 echo $fechaFormateada
                                 ?></td>
+                            <td>
+                                <a class="btn btn-primary" href="usuario-edicion.php?id=<?php echo $user['id']; ?>">Editar</a>
+                            </td>
                         </tr>
                     <?php } ?>
                 <?php } else { ?>
@@ -184,7 +186,7 @@ $roles = getRoles();
             //  change user status
             $(" .status_user").click(function() {
                 var userId = $(this).data("id");
-                var result = confirm('Estás seguro de eliminar el usuario con el id: ' + userId);
+                var result = confirm('Estás seguro de desactivar el usuario con el id: ' + userId);
                 if (!result) return;
 
                 var $this = $(this); // Almacenar el objeto jQuery en una variable
@@ -213,13 +215,8 @@ $roles = getRoles();
                         update_rol: true
                     }, // Incluye el campo update_rol
                     success: function(response) {
-                        console.log(response)
                         // Actualizar solo la fila correspondiente en la página
-                        if (response === "success") {
-                            alert("Rol actualizado correctamente");
-                        } else {
-                            alert("Error al actualizar el rol");
-                        }
+
                     },
                 });
             });
