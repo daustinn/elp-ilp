@@ -56,7 +56,7 @@ $roles = getRoles();
         }
         ?>
 
-        <!-- Button trigger modal -->
+        <!-- Button trigger modal --> 
         <div class="flex item-center gap-4 p-2">
             <div class="w-[300px] ">
                 <button type="button" class="btn btn-primary bg-blue-600 text-white rounded-lg w-full h-10" data-toggle="modal" data-target="#exampleModal">
