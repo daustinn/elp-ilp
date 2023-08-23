@@ -97,7 +97,7 @@ $users = getUsers();
                         </button>
                     </div>
                     <div class="modal-body">
-                        <form action="controllers/usuario.controller.php" method="post">
+                        <form action="controllers/colaborador.controller.php" method="post">
                             <div class="grid grid-cols-3 gap">
                                 <div class="form-group col-span-1">
                                     <label for="nombre">DNI</label>
