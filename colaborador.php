@@ -97,18 +97,138 @@ $users = getUsers();
                         </button>
                     </div>
                     <div class="modal-body">
-                        <form action="controllers/usuario.controller.php" method="post">
-                            <div class="grid grid-cols-3 gap-3">
+                        <form action="controllers/colaborador.controller.php" method="post">
+                            <div class="grid grid-cols-3 gap">
+                                <div class="form-group col-span-1">
+                                    <label for="nombre">DNI</label>
+                                    <input type="" id="" autofocus class="form-control" name="" required>
+                                </div>
+                                <div class="form-group col-span-1">
+                                    <label for="nombre">Nombres</label>
+                                    <input type="" id="" autofocus class="form-control" name="" required>
+                                </div>
+                                <div class="form-group col-span-1">
+                                    <label for="nombre">Apellidos</label>
+                                    <input type="" id="" autofocus class="form-control" name="" required>
+                                </div>
+                                <div class="form-group col-span-2">
+                                    <label for="nombre">Usuario</label>
+                                    <select name="usuario" class="form-control">
+                                        <?php
+                                        if ($users) {
+                                            foreach ($users as $usuario) {
+                                                echo "<option value='" . $usuario['id'] . "'>"
+                                                    . $usuario['usuario'] .
+                                                    "</option>";
+                                            }
+                                        } else {
+                                            echo "<tr><td colspan='2'>No hay sedes registradas.</td></tr>";
+                                        }
+                                        ?>
+                                    </select>
+                                </div>
+                                <div class="form-group col-span-2">
+                                    <label for="nombre">Cargo</label>
+                                    <select name="cargo" class="form-control">
+                                        <?php
+                                        if ($cargos) {
+                                            foreach ($cargos as $cargo) {
+                                                echo "<option value='" . $cargo['id'] . "'>"
+                                                    . $cargo['nombre'] .
+                                                    "</option>";
+                                            }
+                                        } else {
+                                            echo "<tr><td colspan='2'>No hay sedes registradas.</td></tr>";
+                                        }
+                                        ?>
+                                    </select>
+                                </div>
+                                <div class="form-group col-span-1">
+                                    <label for="nombre">Sede</label>
+                                    <select name="sede" class="form-control">
+                                        <?php
+                                        if ($sedes) {
+                                            foreach ($sedes as $sede) {
+                                                echo "<option value='" . $sede['id'] . "'>"
+                                                    . $sede['lugar'] .
+                                                    "</option>";
+                                            }
+                                        } else {
+                                            echo "<tr><td colspan='2'>No hay sedes registradas.</td></tr>";
+                                        }
+                                        ?>
+                                    </select>
+                                </div>
                                 <div class="form-group col-span-3">
+                                    <label for="nombre">Puesto</label>
+                                    <select name="puesto" class="form-control">
+                                        <?php
+                                        if ($puestos) {
+                                            foreach ($puestos as $puesto) {
+                                                echo "<option value='" . $puesto['id'] . "'>"
+                                                    . $puesto['nombre'] .
+                                                    "</option>";
+                                            }
+                                        } else {
+                                            echo "<tr><td colspan='2'>No hay sedes registradas.</td></tr>";
+                                        }
+                                        ?>
+                                    </select>
+                                </div>
+                                <div class="form-group col-span-1">
                                     <label for="nombre">Area</label>
-                                    <input type="email" id="" autofocus class="form-control" name="" required>
+                                    <select name="area" class="form-control">
+                                        <?php
+                                        if ($areas) {
+                                            foreach ($areas as $area) {
+                                                echo "<option value='" . $area['id'] . "'>"
+                                                    . $area['nombre'] .
+                                                    "</option>";
+                                            }
+                                        } else {
+                                            echo "<tr><td colspan='2'>No hay sedes registradas.</td></tr>";
+                                        }
+                                        ?>
+                                    </select>
+                                </div>
+                                <div class="form-group col-span-1">
+                                    <label for="nombre">Departamento</label>
+                                    <select name="departamento" class="form-control">
+                                        <?php
+                                        if ($departamentos) {
+                                            foreach ($departamentos as $departamento) {
+                                                echo "<option value='" . $departamento['id'] . "'>"
+                                                    . $departamento['nombre'] .
+                                                    "</option>";
+                                            }
+                                        } else {
+                                            echo "<tr><td colspan='2'>No hay sedes registradas.</td></tr>";
+                                        }
+                                        ?>
+                                    </select>
+                                </div>
+                                <div class="form-group col-span-3">
+                                    <label for="nombre">Supervisor</label>
+                                    <select name="supervisor" class="form-control">
+                                        <?php
+                                        if ($supervisors) {
+                                            foreach ($supervisors as $supervisor) {
+                                                echo "<option value='" . $supervisor['id'] . "'>"
+                                                    . $supervisor['nombre'] .$supervisor['nombre'] .
+                                                    "</option>";
+                                            }
+                                        } else {
+                                            echo "<tr><td colspan='2'>No hay sedes registradas.</td></tr>";
+                                        }
+                                        ?>
+                                    </select>
                                 </div>
                             </div>
                           
                             
                             <div class="flex gap-2">
                                 <button type="button" class="btn btn-secondary bg-neutral-700" data-dismiss="modal">Close</button>
-                                <input type="submit" class="bg-blue-600 text-white rounded-lg w-full h-10" value="Registrar Area">
+                                <input type="submit" class="bg-blue-600 text-white rounded-lg w-full h-10" value="Registrar Colaborador">
                             </div>
                         </form>
                     </div>
