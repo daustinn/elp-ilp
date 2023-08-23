@@ -6,10 +6,9 @@ if (isset($_GET['id'])) {
     // Llama a la función para obtener los datos del rol por ID desde tu servicio/DAO
     $sede = getSedesById($id);
 
-    if ($sedes) {
-        $id_sedes = $sedes['id'];
-        $lugar = $sedes['lugar'];
-        
+    if ($sede) {
+        $id_sede = $sede['id'];
+        $lugar = $sede['lugar'];
     } else {
         echo "Sede no encontrado";
     }
@@ -45,16 +44,15 @@ if (isset($_GET['id'])) {
                 <form action="controllers/sede.controller.php" method="post">
                     <div class="grid grid-cols-3 gap-1">
                         <input type="hidden" name="_method" value="PUT">
+                        <div class="form-group col-span-3">
+                            <label for="id">Id</label>
+                            <input type="number" value="<?php echo $id_sede ?>" class="form-control" name="id" id="id" readonly />
+                        </div>
+                        <div class="form-group col-span-3">
+                            <label for="lugar">Lugar</label>
+                            <input type="text" value="<?php echo $lugar ?>" id="lugar" autofocus class="form-control" name="lugar" required />
+                        </div>
 
-                        <div class="form-group col-span-3">
-                            <label for="nombre">Id</label>
-                            <input type="number" value="<?php echo $id_sedes ?>" class="form-control" name="id" id="id" readonly />
-                        </div>
-                        <div class="form-group col-span-3">
-                            <label for="nombre">lugr</label>
-                            <input type="text" value="<?php echo $nombre ?>" id="nombre" autofocus class="form-control" name="nombre" required />
-                        </div>
-                        
                     </div>
                     <div class="flex gap-2">
                         <button type="button" onclick="history.back()" class="btn btn-secondary bg-neutral-700 h-10" data-dismiss="modal">Cancelar</button>
