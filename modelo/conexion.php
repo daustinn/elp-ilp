@@ -13,11 +13,7 @@ function connectToDatabase()
      $port = '3306';
      $username = 'root';
      $password = '';
-<<<<<<< HEAD
-     $database = 'elp-ilp';
-=======
      $database = 'elp_db';
->>>>>>> cab4a417bb18210b8906a1b6a3fc267a5a503189
 
      try {
           $connection = new mysqli($host . ':' . $port, $username, $password, $database);

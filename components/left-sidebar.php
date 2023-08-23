@@ -2,8 +2,6 @@
 // Session start
 $rol = $_SESSION['rol'];
 ?>
-
-
 <div class="left-side-bar">
     <div class="brand-logo">
         <a href="index.php">
@@ -65,6 +63,8 @@ $rol = $_SESSION['rol'];
                             <li><a href="areas.php">Areas</a></li>
                             <li><a href="departamentos.php">Departamentos</a></li>
                             <li><a href="tipo-objetivos.php">Tipo Objetivos</a></li>
+                            <li><a href="puestos.php">Puestos</a></li>
+                            <li><a href="cargos.php">Cagos</a></li>
                         </ul>
                     </li>
                 <?php

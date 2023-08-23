@@ -1,7 +1,8 @@
 <?php
+require_once('modelo/conexion.php');
 
 
-function obtenerPuesto()
+function getPuestos()
 {
     $conexion = connectToDatabase();
     if ($conexion) {

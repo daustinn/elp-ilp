@@ -3,21 +3,20 @@
 // Incluye el archivos .services.php
 include 'services/colaborador.service.php';
 include 'services/user.service.php';
-
+include 'services/cargo.service.php';
+include 'services/sede.service.php';
+include 'services/area.service.php';
+include 'services/departamento.service.php';
 
 
 // Obtiene las sedes desde la base de datos
 $colaboradores = getColaboradores();
 $users = getUsers();
-
-
-
-
+$sedes = getSedes();
+$departamentos = getDepartamento();
+$areas = getArea();
 
 ?>
-
-
-
 
 
 <!-- include component head -->
@@ -98,28 +97,28 @@ $users = getUsers();
                     </div>
                     <div class="modal-body">
                         <form action="controllers/usuario.controller.php" method="post">
-                            <div class="grid grid-cols-3 gap">
-                                <div class="form-group col-span-1">
+                            <div class="grid grid-cols-12 gap-3">
+                                <div class="form-group col-span-4">
                                     <label for="nombre">DNI</label>
                                     <input type="" id="" autofocus class="form-control" name="" required>
                                 </div>
-                                <div class="form-group col-span-1">
+                                <div class="form-group col-span-4">
                                     <label for="nombre">Nombres</label>
                                     <input type="" id="" autofocus class="form-control" name="" required>
                                 </div>
-                                <div class="form-group col-span-1">
+                                <div class="form-group col-span-4">
                                     <label for="nombre">Apellidos</label>
                                     <input type="" id="" autofocus class="form-control" name="" required>
                                 </div>
-                                <div class="form-group col-span-2">
+                                <div class="form-group col-span-6">
                                     <label for="nombre">Usuario</label>
                                     <select name="usuario" class="form-control">
                                         <?php
                                         if ($users) {
                                             foreach ($users as $usuario) {
-                                                echo "<option value='" . $usuario['id'] . "'>"
-                                                    . $usuario['usuario'] .
-                                                    "</option>";
+                                        ?>
+                                                <option value='<?php echo $usuario['id'] ?> '><?php echo $usuario['usuario'] ?> </option>
+                                        <?php
                                             }
                                         } else {
                                             echo "<tr><td colspan='2'>No hay sedes registradas.</td></tr>";
@@ -127,7 +126,7 @@ $users = getUsers();
                                         ?>
                                     </select>
                                 </div>
-                                <div class="form-group col-span-2">
+                                <div class="form-group col-span-6">
                                     <label for="nombre">Cargo</label>
                                     <select name="cargo" class="form-control">
                                         <?php
@@ -143,7 +142,7 @@ $users = getUsers();
                                         ?>
                                     </select>
                                 </div>
-                                <div class="form-group col-span-1">
+                                <div class="form-group col-span-4">
                                     <label for="nombre">Sede</label>
                                     <select name="sede" class="form-control">
                                         <?php
@@ -159,7 +158,7 @@ $users = getUsers();
                                         ?>
                                     </select>
                                 </div>
-                                <div class="form-group col-span-3">
+                                <div class="form-group col-span-4">
                                     <label for="nombre">Puesto</label>
                                     <select name="puesto" class="form-control">
                                         <?php
@@ -175,7 +174,7 @@ $users = getUsers();
                                         ?>
                                     </select>
                                 </div>
-                                <div class="form-group col-span-1">
+                                <div class="form-group col-span-4">
                                     <label for="nombre">Area</label>
                                     <select name="area" class="form-control">
                                         <?php
@@ -191,7 +190,7 @@ $users = getUsers();
                                         ?>
                                     </select>
                                 </div>
-                                <div class="form-group col-span-1">
+                                <div class="form-group col-span-4">
                                     <label for="nombre">Departamento</label>
                                     <select name="departamento" class="form-control">
                                         <?php
@@ -207,14 +206,14 @@ $users = getUsers();
                                         ?>
                                     </select>
                                 </div>
-                                <div class="form-group col-span-3">
+                                <div class="form-group col-span-8x">
                                     <label for="nombre">Supervisor</label>
                                     <select name="supervisor" class="form-control">
                                         <?php
                                         if ($supervisors) {
                                             foreach ($supervisors as $supervisor) {
                                                 echo "<option value='" . $supervisor['id'] . "'>"
-                                                    . $supervisor['nombre'] .$supervisor['nombre'] .
+                                                    . $supervisor['nombre'] . $supervisor['nombre'] .
                                                     "</option>";
                                             }
                                         } else {
@@ -224,8 +223,7 @@ $users = getUsers();
                                     </select>
                                 </div>
                             </div>
-                          
-                            
+
                             <div class="flex gap-2">
                                 <button type="button" class="btn btn-secondary bg-neutral-700" data-dismiss="modal">Close</button>
                                 <input type="submit" class="bg-blue-600 text-white rounded-lg w-full h-10" value="Registrar Colaborador">
@@ -255,15 +253,15 @@ $users = getUsers();
                 </tr>
             </thead>
             <tbody>
-            <?php if ($colaboradores) { ?>
+                <?php if ($colaboradores) { ?>
                     <?php foreach ($colaboradores as $colaborador) { ?>
                         <tr>
                             <td><?php echo $colaborador['id']; ?></td>
                             <td><?php echo $colaborador['dni']; ?></td>
                             <td><?php echo $colaborador['nombres']; ?></td>
                             <td><?php echo $colaborador['apellidos']; ?></td>
-                            <td><?php echo $colaborador['idusuario'] ; ?></td>
-                           
+                            <td><?php echo $colaborador['idusuario']; ?></td>
+
                             <td><?php echo $colaborador['idcargo']; ?></td>
                             <td><?php echo $colaborador['idsede']; ?></td>
                             <td><?php echo $colaborador['idpuesto']; ?></td>

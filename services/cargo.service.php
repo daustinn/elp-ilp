@@ -1,6 +1,6 @@
 <?php
 
-function obtenerCargo()
+function getCargos()
 {
     $conexion = connectToDatabase();
     if ($conexion) {
