@@ -86,7 +86,6 @@ $areas = getArea();
                                     <label for="nombre">Nombre</label>
                                     <input type="text" id="nombre" autofocus class="form-control" name="nombre" required>
                                 </div>
-                                
                             </div>
                             <div class="flex gap-2">
                                 <button type="button" class="btn btn-secondary bg-neutral-700" data-dismiss="modal">Cerrar</button>

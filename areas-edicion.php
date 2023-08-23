@@ -9,7 +9,6 @@ if (isset($_GET['id'])) {
     if ($area) {
         $id_area = $area['id'];
         $nombre = $area['nombre'];
-    
     } else {
         echo "Area no encontrado";
     }
@@ -54,7 +53,7 @@ if (isset($_GET['id'])) {
                             <label for="nombre">Nombre</label>
                             <input type="text" value="<?php echo $nombre ?>" id="nombre" autofocus class="form-control" name="nombre" required />
                         </div>
-                        
+
                     </div>
                     <div class="flex gap-2">
                         <button type="button" onclick="history.back()" class="btn btn-secondary bg-neutral-700 h-10" data-dismiss="modal">Cancelar</button>
