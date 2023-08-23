@@ -6,7 +6,7 @@ include 'services/area.service.php';
 
 
 // Obtiene las sedes desde la base de datos
-$areas = getAreas();
+$areas = getArea();
 
 
 ?>
@@ -19,19 +19,7 @@ $areas = getAreas();
 <?php include 'components/head-logged-in.php' ?>
 
 <body>
-    <div class="pre-loader">
-        <div class="pre-loader-box">
-            <div class="loader-logo">
-                <!-- <img src="vendors/images/deskapp-logo.svg" alt="" /> -->
-                <img src="src/images/logo_elp.gif" class="w-40" alt="">
-            </div>
-            <div class="loader-progress" id="progress_div">
-                <div class="bar" id="bar1"></div>
-            </div>
-            <div class="percent" id="percent1">0%</div>
-            <div class=" text-sm text-center animation-pulse">Cargando...</div>
-        </div>
-    </div>
+
 
 
     <!-- include component nav -->
@@ -45,7 +33,7 @@ $areas = getAreas();
     <!-- CONTENT PAGE START -->
     <div class="main-container">
         <div class="pb-2">
-            <h2 class="h3 mb-0 font-bold text-3xl">Administracion de Areas</h2>
+            <h2 class="h3 mb-0 font-bold text-3xl">Administracion de Area</h2>
         </div>
         <!-- Alerta de Bootstrap -->
         <?php
@@ -86,24 +74,23 @@ $areas = getAreas();
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Registrar nueva Area</h5>
+                        <h5 class="modal-title" id="exampleModalLabel">Registrar nueva area</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
                     <div class="modal-body">
-                        <form action="controllers/usuario.controller.php" method="post">
+                        <form action="controllers/tipo-objetivo.controller.php" method="post">
                             <div class="grid grid-cols-3 gap-3">
                                 <div class="form-group col-span-3">
-                                    <label for="nombre">Area</label>
-                                    <input type="email" id="" autofocus class="form-control" name="" required>
+                                    <label for="nombre">Nombre</label>
+                                    <input type="text" id="nombre" autofocus class="form-control" name="nombre" required>
                                 </div>
+                                
                             </div>
-                          
-                            
                             <div class="flex gap-2">
-                                <button type="button" class="btn btn-secondary bg-neutral-700" data-dismiss="modal">Close</button>
-                                <input type="submit" class="bg-blue-600 text-white rounded-lg w-full h-10" value="Registrar Area">
+                                <button type="button" class="btn btn-secondary bg-neutral-700" data-dismiss="modal">Cerrar</button>
+                                <input type="submit" class="bg-blue-600 text-white rounded-lg w-full h-10" value="Registrar">
                             </div>
                         </form>
                     </div>
@@ -121,25 +108,25 @@ $areas = getAreas();
                 </tr>
             </thead>
             <tbody>
-            <?php if ($areas) { ?>
+                <?php if ($areas) { ?>
                     <?php foreach ($areas as $area) { ?>
                         <tr>
                             <td><?php echo $area['id']; ?></td>
                             <td><?php echo $area['nombre']; ?></td>
-                           
-                          
-
                             <td><?php
 
                                 $fechaDateTime = new DateTime($area['created_at']);
                                 $fechaFormateada = $fechaDateTime->format('d \d\e F \d\e Y');
                                 echo $fechaFormateada
                                 ?></td>
+                            <td>
+                                <a class="btn btn-primary" href="areas-edicion.php?id=<?php echo $area['id']; ?>">Editar</a>
+                            </td>
                         </tr>
                     <?php } ?>
                 <?php } else { ?>
                     <tr>
-                        <td colspan='2'>No hay sedes registradas.</td>
+                        <td colspan='2'>No hay areas registradas.</td>
                     </tr>
                 <?php } ?>
             </tbody>

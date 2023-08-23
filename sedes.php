@@ -19,20 +19,6 @@ $sedes = getSedes();
 <?php include 'components/head-logged-in.php' ?>
 
 <body>
-    <div class="pre-loader">
-        <div class="pre-loader-box">
-            <div class="loader-logo">
-                <!-- <img src="vendors/images/deskapp-logo.svg" alt="" /> -->
-                <img src="src/images/logo_elp.gif" class="w-40" alt="">
-            </div>
-            <div class="loader-progress" id="progress_div">
-                <div class="bar" id="bar1"></div>
-            </div>
-            <div class="percent" id="percent1">0%</div>
-            <div class=" text-sm text-center animation-pulse">Cargando...</div>
-        </div>
-    </div>
-
 
     <!-- include component nav -->
     <?php include 'components/nav.php' ?>
@@ -86,35 +72,39 @@ $sedes = getSedes();
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Registrar nueva Area</h5>
+                        <h5 class="modal-title" id="exampleModalLabel">Registrar nueva Sede</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
                     <div class="modal-body">
-                        <form action="controllers/usuario.controller.php" method="post">
-                            <div class="grid grid-cols-3 gap-3">
+                        <form action="controllers/sede.controller.php" method="post">
+                            <div class="grid grid-cols-3 gap-1">
                                 <div class="form-group col-span-3">
-                                    <label for="nombre">Area</label>
-                                    <input type="email" id="" autofocus class="form-control" name="" required>
+                                    <label for="lugar">lugar</label>
+                                    <input type="text" id="lugar" autofocus class="form-control" name="lugar" required />
                                 </div>
+                                
                             </div>
 
 
                             <div class="flex gap-2">
-                                <button type="button" class="btn btn-secondary bg-neutral-700" data-dismiss="modal">Close</button>
-                                <input type="submit" class="bg-blue-600 text-white rounded-lg w-full h-10" value="Registrar Area">
+                                <button type="button" class="btn btn-secondary bg-neutral-700 h-10" data-dismiss="modal">Cerrar</button>
+                                <input type="submit" class="bg-blue-600 text-white rounded-lg w-full h-10" value="Registrar Lugar">
                             </div>
                         </form>
                     </div>
+
                 </div>
             </div>
         </div>
+
         <table class="table ml-2 hover multiple-select-row data-table-export nowrap">
             <thead>
                 <tr>
                     <th class=" datatable-nosort">Id</th>
-                    <th>Nombre</th>
+                    <th>Lugar</th>
+                
                     <th>Registro</th>
                     <th></th>
                 </tr>
@@ -125,23 +115,27 @@ $sedes = getSedes();
                         <tr>
                             <td><?php echo $sede['id']; ?></td>
                             <td><?php echo $sede['lugar']; ?></td>
+                    
                             <td><?php
-
                                 $fechaDateTime = new DateTime($sede['created_at']);
                                 $fechaFormateada = $fechaDateTime->format('d \d\e F \d\e Y');
                                 echo $fechaFormateada
                                 ?></td>
+                            <td>
+                                <a class="btn btn-primary" href="sedes-edicion.php?id=<?php echo $sede['id']; ?>">Editar</a>
+                            </td>
                         </tr>
                     <?php } ?>
                 <?php } else { ?>
                     <tr>
-                        <td colspan='2'>No hay sedes registradas.</td>
+                        <td colspan='2'>No hay roles registradas.</td>
                     </tr>
                 <?php } ?>
             </tbody>
         </table>
     </div>
     <!-- CONTENT PAGE END  -->
+
 
 
     <!-- js -->

@@ -6,7 +6,7 @@ include 'services/departamento.service.php';
 
 
 // Obtiene las sedes desde la base de datos
-$departamentos = getDepartamentos();
+$departamentos = getDepartamento();
 
 
 ?>
@@ -19,19 +19,7 @@ $departamentos = getDepartamentos();
 <?php include 'components/head-logged-in.php' ?>
 
 <body>
-    <div class="pre-loader">
-        <div class="pre-loader-box">
-            <div class="loader-logo">
-                <!-- <img src="vendors/images/deskapp-logo.svg" alt="" /> -->
-                <img src="src/images/logo_elp.gif" class="w-40" alt="">
-            </div>
-            <div class="loader-progress" id="progress_div">
-                <div class="bar" id="bar1"></div>
-            </div>
-            <div class="percent" id="percent1">0%</div>
-            <div class=" text-sm text-center animation-pulse">Cargando...</div>
-        </div>
-    </div>
+
 
 
     <!-- include component nav -->
@@ -86,24 +74,23 @@ $departamentos = getDepartamentos();
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Registrar Departamentos</h5>
+                        <h5 class="modal-title" id="exampleModalLabel">Registrar nuevo departamento</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
                     <div class="modal-body">
-                        <form action="controllers/usuario.controller.php" method="post">
+                        <form action="controllers/departamento.controller.php" method="post">
                             <div class="grid grid-cols-3 gap-3">
                                 <div class="form-group col-span-3">
-                                    <label for="nombre">Departamento    </label>
-                                    <input type="email" id="" autofocus class="form-control" name="" required>
+                                    <label for="nombre">Nombre</label>
+                                    <input type="text" id="nombre" autofocus class="form-control" name="nombre" required>
                                 </div>
+                                
                             </div>
-                          
-                            
                             <div class="flex gap-2">
-                                <button type="button" class="btn btn-secondary bg-neutral-700" data-dismiss="modal">Close</button>
-                                <input type="submit" class="bg-blue-600 text-white rounded-lg w-full h-10" value="Registrar Area">
+                                <button type="button" class="btn btn-secondary bg-neutral-700" data-dismiss="modal">Cerrar</button>
+                                <input type="submit" class="bg-blue-600 text-white rounded-lg w-full h-10" value="Registrar Departamento">
                             </div>
                         </form>
                     </div>
@@ -121,26 +108,25 @@ $departamentos = getDepartamentos();
                 </tr>
             </thead>
             <tbody>
-            <?php if ($departamentos) { ?>
+                <?php if ($departamentos) { ?>
                     <?php foreach ($departamentos as $departamento) { ?>
                         <tr>
                             <td><?php echo $departamento['id']; ?></td>
                             <td><?php echo $departamento['nombre']; ?></td>
-                           
-                           
-                          
-
                             <td><?php
 
                                 $fechaDateTime = new DateTime($departamento['created_at']);
                                 $fechaFormateada = $fechaDateTime->format('d \d\e F \d\e Y');
                                 echo $fechaFormateada
                                 ?></td>
+                            <td>
+                                <a class="btn btn-primary" href="departamentos-edicion.php?id=<?php echo $departamento['id']; ?>">Editar</a>
+                            </td>
                         </tr>
                     <?php } ?>
                 <?php } else { ?>
                     <tr>
-                        <td colspan='2'>No hay rodepartamentos registradas.</td>
+                        <td colspan='2'>No hay departamentos registrados.</td>
                     </tr>
                 <?php } ?>
             </tbody>
