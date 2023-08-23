@@ -4,7 +4,7 @@ require_once 'services/area.service.php'; // Archivo de conexión a la base de d
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
     // Llama a la función para obtener los datos del rol por ID desde tu servicio/DAO
-    $rol = getAreaById($id);
+    $area = getAreaById($id);
 
     if ($area) {
         $id_area = $area['id'];

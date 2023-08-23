@@ -80,7 +80,7 @@ $areas = getArea();
                         </button>
                     </div>
                     <div class="modal-body">
-                        <form action="controllers/tipo-objetivo.controller.php" method="post">
+                        <form action="controllers/area.controller.php" method="post">
                             <div class="grid grid-cols-3 gap-3">
                                 <div class="form-group col-span-3">
                                     <label for="nombre">Nombre</label>

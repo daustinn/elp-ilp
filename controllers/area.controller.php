@@ -51,7 +51,7 @@ function createArea($nombre,)
 
     if ($result_check->num_rows > 0) {
         // Rol ya existe, retornar un mensaje de error
-        return "Ya existe un rol con el nombre <strong>$nombre</strong>.";
+        return "Ya existe un area con el nombre <strong>$nombre</strong>.";
     } else {
         // Rol no existe, proceder con la inserción
         $query_insert = "INSERT INTO area (nombre) VALUES ('$nombre', )";
@@ -74,12 +74,12 @@ function updateArea($id, $nuevoNombre)
     $conexion = connectToDatabase();
 
     // Verificar si el rol ya existe por su ID
-    $query_check = "SELECT id FROM rol WHERE id = '$id'";
+    $query_check = "SELECT id FROM area WHERE id = '$id'";
     $result_check = $conexion->query($query_check);
 
     if ($result_check->num_rows === 0) {
         // Rol no existe, retornar un mensaje de error
-        return "El rol con el ID <strong>$id</strong> no existe.";
+        return "El area con el ID <strong>$id</strong> no existe.";
     } else {
         // Rol existe, proceder con la actualización
         $query_update = "UPDATE area SET nombre = '$nuevoNombre'' WHERE id = '$id'";
