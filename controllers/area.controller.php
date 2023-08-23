@@ -12,7 +12,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Es una solicitud "PUT"
         $id = $_POST["id"];
         $nombre = $_POST["nombre"];
-    
+
         // Realizar la actualización usando la función actualizarrol()
         $result = updateArea($id, $nombre);
         if ($result === true) {
@@ -27,8 +27,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     //POST 
     else {
         $nombre = $_POST["nombre"];
-       
-        $result = createArea($nombre,);
+
+        $result = createArea($nombre);
         if ($result === true) {
             $_SESSION['alert_type'] = 'success';
             $_SESSION['alert_message'] = "Area <strong>$nombre</strong> creado exitosamente.";
@@ -40,7 +40,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 }
 
-function createArea($nombre,)
+function createArea($nombre)
 {
     // Conectar a la base de datos
     $conexion = connectToDatabase();
@@ -54,7 +54,7 @@ function createArea($nombre,)
         return "Ya existe un rol con el nombre <strong>$nombre</strong>.";
     } else {
         // Rol no existe, proceder con la inserción
-        $query_insert = "INSERT INTO area (nombre) VALUES ('$nombre', )";
+        $query_insert = "INSERT INTO area (nombre) VALUES ('$nombre')";
         if ($conexion) {
             // Ejecutar la consulta
             if ($conexion->query($query_insert) === TRUE) {
@@ -74,7 +74,7 @@ function updateArea($id, $nuevoNombre)
     $conexion = connectToDatabase();
 
     // Verificar si el rol ya existe por su ID
-    $query_check = "SELECT id FROM rol WHERE id = '$id'";
+    $query_check = "SELECT id FROM area WHERE id = '$id'";
     $result_check = $conexion->query($query_check);
 
     if ($result_check->num_rows === 0) {
@@ -82,7 +82,7 @@ function updateArea($id, $nuevoNombre)
         return "El rol con el ID <strong>$id</strong> no existe.";
     } else {
         // Rol existe, proceder con la actualización
-        $query_update = "UPDATE area SET nombre = '$nuevoNombre'' WHERE id = '$id'";
+        $query_update = "UPDATE area SET nombre = '$nuevoNombre' WHERE id = '$id'";
         if ($conexion) {
             // Ejecutar la consulta
             if ($conexion->query($query_update) === TRUE) {

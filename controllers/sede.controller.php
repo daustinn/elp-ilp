@@ -13,7 +13,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $id = $_POST["id"];
         $lugar = $_POST["lugar"];
         // Realizar la actualización usando la función actualizarrol()
-        $result = updateSedes($id, $lugar );
+        $result = updateSede($id, $lugar);
         if ($result === true) {
             $_SESSION['alert_type'] = 'success';
             $_SESSION['alert_message'] = "Sede <strong>$lugar</strong> actualizado correctamente.";
@@ -26,7 +26,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     //POST 
     else {
         $lugar = $_POST["lugar"];
-       
+
 
         $result = createSedes($lugar);
         if ($result === true) {
@@ -68,7 +68,7 @@ function createSedes($lugar)
     }
 }
 //cambio de variable nuevolugar a lugar
-function updateSedes($id, $nuevolugar)
+function updateSede($id, $nuevolugar)
 {
     // Conectar a la base de datos
     $conexion = connectToDatabase();
@@ -82,7 +82,7 @@ function updateSedes($id, $nuevolugar)
         return "La sede con el ID <strong>$id</strong> no existe.";
     } else {
         // Sede existe, proceder con la actualización
-        $query_update = "UPDATE sede SET lugar = '$nuevolugar',  WHERE id = '$id'";
+        $query_update = "UPDATE sede SET lugar = '$nuevolugar'  WHERE id = '$id'";
         if ($conexion) {
             // Ejecutar la consulta
             if ($conexion->query($query_update) === TRUE) {
