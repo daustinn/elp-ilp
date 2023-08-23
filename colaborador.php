@@ -96,9 +96,15 @@ $areas = getArea();
                         </button>
                     </div>
                     <div class="modal-body">
+<<<<<<< HEAD
                         <form action="controllers/usuario.controller.php" method="post">
                             <div class="grid grid-cols-12 gap-3">
                                 <div class="form-group col-span-4">
+=======
+                        <form action="controllers/colaborador.controller.php" method="post">
+                            <div class="grid grid-cols-3 gap">
+                                <div class="form-group col-span-1">
+>>>>>>> ba7b3329517c2edc8bebf8633c00b9d60fd6822f
                                     <label for="nombre">DNI</label>
                                     <input type="" id="" autofocus class="form-control" name="" required>
                                 </div>

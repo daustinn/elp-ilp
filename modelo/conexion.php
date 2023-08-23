@@ -12,7 +12,17 @@ function connectToDatabase()
      $host = 'localhost';
      $port = '3306';
      $username = 'root';
+<<<<<<< HEAD
+     $password = 'root';
+=======
      $password = '';
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+     $database = 'elp-ilp';
+=======
+>>>>>>> 49b3d372ca7ec17241774f21d689cf52cbba9d3e
+>>>>>>> ba7b3329517c2edc8bebf8633c00b9d60fd6822f
      $database = 'elp_db';
 
      try {
