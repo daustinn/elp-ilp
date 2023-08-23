@@ -28,7 +28,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     else {
         $nombre = $_POST["nombre"];
         $descripcion = $_POST["descripcion"];
-
         $result = createRol($nombre, $descripcion);
         if ($result === true) {
             $_SESSION['alert_type'] = 'success';

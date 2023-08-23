@@ -6,7 +6,9 @@ include 'services/user.service.php';
 include 'services/cargo.service.php';
 include 'services/sede.service.php';
 include 'services/area.service.php';
+include 'services/puesto.service.php';
 include 'services/departamento.service.php';
+
 
 
 // Obtiene las sedes desde la base de datos
@@ -15,6 +17,10 @@ $users = getUsers();
 $sedes = getSedes();
 $departamentos = getDepartamento();
 $areas = getArea();
+$cargos = getCargos();
+$puestos = getPuestos()
+
+
 
 ?>
 
@@ -23,20 +29,6 @@ $areas = getArea();
 <?php include 'components/head-logged-in.php' ?>
 
 <body>
-    <div class="pre-loader">
-        <div class="pre-loader-box">
-            <div class="loader-logo">
-                <!-- <img src="vendors/images/deskapp-logo.svg" alt="" /> -->
-                <img src="src/images/logo_elp.gif" class="w-40" alt="">
-            </div>
-            <div class="loader-progress" id="progress_div">
-                <div class="bar" id="bar1"></div>
-            </div>
-            <div class="percent" id="percent1">0%</div>
-            <div class=" text-sm text-center animation-pulse">Cargando...</div>
-        </div>
-    </div>
-
 
     <!-- include component nav -->
     <?php include 'components/nav.php' ?>
@@ -96,134 +88,98 @@ $areas = getArea();
                         </button>
                     </div>
                     <div class="modal-body">
-<<<<<<< HEAD
-                        <form action="controllers/usuario.controller.php" method="post">
+                        <form action="controllers/colaborador.controller.php" method="post">
                             <div class="grid grid-cols-12 gap-3">
                                 <div class="form-group col-span-4">
-=======
-                        <form action="controllers/colaborador.controller.php" method="post">
-                            <div class="grid grid-cols-3 gap">
-                                <div class="form-group col-span-1">
->>>>>>> ba7b3329517c2edc8bebf8633c00b9d60fd6822f
                                     <label for="nombre">DNI</label>
-                                    <input type="" id="" autofocus class="form-control" name="" required>
+                                    <input type="" id="" autofocus class="form-control" name="dni" required>
                                 </div>
                                 <div class="form-group col-span-4">
                                     <label for="nombre">Nombres</label>
-                                    <input type="" id="" autofocus class="form-control" name="" required>
+                                    <input type="" id="" autofocus class="form-control" name="nombres" required>
                                 </div>
                                 <div class="form-group col-span-4">
                                     <label for="nombre">Apellidos</label>
-                                    <input type="" id="" autofocus class="form-control" name="" required>
+                                    <input type="" id="" autofocus class="form-control" name="apellidos" required>
                                 </div>
                                 <div class="form-group col-span-6">
                                     <label for="nombre">Usuario</label>
-                                    <select name="usuario" class="form-control">
+                                    <select name="idusuario" class="form-control">
                                         <?php
-                                        if ($users) {
-                                            foreach ($users as $usuario) {
+                                        foreach ($users as $usuario) {
                                         ?>
-                                                <option value='<?php echo $usuario['id'] ?> '><?php echo $usuario['usuario'] ?> </option>
+                                            <option value='<?php echo $usuario['id'] ?> '><?php echo $usuario['usuario'] ?> </option>
                                         <?php
-                                            }
-                                        } else {
-                                            echo "<tr><td colspan='2'>No hay sedes registradas.</td></tr>";
                                         }
                                         ?>
                                     </select>
                                 </div>
                                 <div class="form-group col-span-6">
                                     <label for="nombre">Cargo</label>
-                                    <select name="cargo" class="form-control">
+                                    <select name="idcargo" class="form-control">
                                         <?php
-                                        if ($cargos) {
-                                            foreach ($cargos as $cargo) {
-                                                echo "<option value='" . $cargo['id'] . "'>"
-                                                    . $cargo['nombre'] .
-                                                    "</option>";
-                                            }
-                                        } else {
-                                            echo "<tr><td colspan='2'>No hay sedes registradas.</td></tr>";
-                                        }
+                                        foreach ($cargos as $cargo) {
                                         ?>
+                                            <option value='<?php echo $cargo['id'] ?> '><?php echo $cargo['nombre'] ?> </option>
+                                        <?php } ?>
                                     </select>
                                 </div>
                                 <div class="form-group col-span-4">
                                     <label for="nombre">Sede</label>
-                                    <select name="sede" class="form-control">
+                                    <select name="idsede" class="form-control">
                                         <?php
-                                        if ($sedes) {
-                                            foreach ($sedes as $sede) {
-                                                echo "<option value='" . $sede['id'] . "'>"
-                                                    . $sede['lugar'] .
-                                                    "</option>";
-                                            }
-                                        } else {
-                                            echo "<tr><td colspan='2'>No hay sedes registradas.</td></tr>";
+                                        foreach ($sedes as $sede) {
+                                        ?>
+                                            <option value='<?php echo $sede['id'] ?> '><?php echo $sede['lugar'] ?></option>
+                                        <?php
                                         }
                                         ?>
                                     </select>
                                 </div>
                                 <div class="form-group col-span-4">
                                     <label for="nombre">Puesto</label>
-                                    <select name="puesto" class="form-control">
+                                    <select name="idpuesto" class="form-control">
                                         <?php
-                                        if ($puestos) {
-                                            foreach ($puestos as $puesto) {
-                                                echo "<option value='" . $puesto['id'] . "'>"
-                                                    . $puesto['nombre'] .
-                                                    "</option>";
-                                            }
-                                        } else {
-                                            echo "<tr><td colspan='2'>No hay sedes registradas.</td></tr>";
+                                        foreach ($puestos as $puesto) {
+                                        ?>
+                                            <option value='<?php echo $puesto['id'] ?> '><?php echo $puesto['nombre'] ?></option>
+                                        <?php
                                         }
                                         ?>
                                     </select>
                                 </div>
                                 <div class="form-group col-span-4">
                                     <label for="nombre">Area</label>
-                                    <select name="area" class="form-control">
+                                    <select name="idarea" class="form-control">
                                         <?php
-                                        if ($areas) {
-                                            foreach ($areas as $area) {
-                                                echo "<option value='" . $area['id'] . "'>"
-                                                    . $area['nombre'] .
-                                                    "</option>";
-                                            }
-                                        } else {
-                                            echo "<tr><td colspan='2'>No hay sedes registradas.</td></tr>";
+                                        foreach ($areas as $area) {
+                                        ?>
+                                            <option value='<?php echo $area['id'] ?> '><?php echo $area['nombre'] ?></option>
+                                        <?php
                                         }
                                         ?>
                                     </select>
                                 </div>
                                 <div class="form-group col-span-4">
                                     <label for="nombre">Departamento</label>
-                                    <select name="departamento" class="form-control">
+                                    <select name="iddepartamento" class="form-control">
                                         <?php
-                                        if ($departamentos) {
-                                            foreach ($departamentos as $departamento) {
-                                                echo "<option value='" . $departamento['id'] . "'>"
-                                                    . $departamento['nombre'] .
-                                                    "</option>";
-                                            }
-                                        } else {
-                                            echo "<tr><td colspan='2'>No hay sedes registradas.</td></tr>";
+                                        foreach ($departamentos as $departamento) {
+                                        ?>
+                                            <option value='<?php echo $departamento['id'] ?> '><?php echo $departamento['nombre'] ?></option>
+                                        <?php
                                         }
                                         ?>
                                     </select>
                                 </div>
-                                <div class="form-group col-span-8x">
+                                <div class="form-group col-span-8">
                                     <label for="nombre">Supervisor</label>
-                                    <select name="supervisor" class="form-control">
+                                    <select name="idsupervisor" class="form-control">
                                         <?php
-                                        if ($supervisors) {
-                                            foreach ($supervisors as $supervisor) {
-                                                echo "<option value='" . $supervisor['id'] . "'>"
-                                                    . $supervisor['nombre'] . $supervisor['nombre'] .
-                                                    "</option>";
-                                            }
-                                        } else {
-                                            echo "<tr><td colspan='2'>No hay sedes registradas.</td></tr>";
+                                        foreach ($colaboradores as $colaborador) {
+                                        ?>
+                                            <option value='<?php echo $colaborador['id'] ?> '><?php echo $colaborador['nombres'] ?> <?php echo $colaborador['apellidos'] ?></option>
+                                        <?php
                                         }
                                         ?>
                                     </select>
@@ -266,14 +222,14 @@ $areas = getArea();
                             <td><?php echo $colaborador['dni']; ?></td>
                             <td><?php echo $colaborador['nombres']; ?></td>
                             <td><?php echo $colaborador['apellidos']; ?></td>
-                            <td><?php echo $colaborador['idusuario']; ?></td>
+                            <td><?php echo $colaborador['usuario']; ?></td>
 
-                            <td><?php echo $colaborador['idcargo']; ?></td>
-                            <td><?php echo $colaborador['idsede']; ?></td>
-                            <td><?php echo $colaborador['idpuesto']; ?></td>
-                            <td><?php echo $colaborador['idarea']; ?></td>
-                            <td><?php echo $colaborador['iddepartamento']; ?></td>
-                            <td><?php echo $colaborador['idsupervisor']; ?></td>
+                            <td><?php echo $colaborador['cargo']; ?></td>
+                            <td><?php echo $colaborador['sede']; ?></td>
+                            <td><?php echo $colaborador['puesto']; ?></td>
+                            <td><?php echo $colaborador['area']; ?></td>
+                            <td><?php echo $colaborador['departamento']; ?></td>
+                            <td><?php echo $colaborador['supervisor']; ?></td>
 
                             <td><?php
 

@@ -1,41 +1,62 @@
 <?php
-include '../services/colaborador.service.php';
+
+
+require_once('../modelo/conexion.php');
+session_start();
 
 //SI ELMETODO ES POST
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $dni = $_POST["dni"];
     $nombres = $_POST["nombres"];
     $apellidos = $_POST["apellidos"];
-    $cargo = $_POST["cargo"];
-    $usuario = $_POST["usuario"];
-    $sede = $_POST["sede"];
-    $puesto = $_POST["puesto"];
-    $area = $_POST["area"];
-<<<<<<< HEAD
-    $departamento = $_POST["departamento"];
-    $supervisor = $_POST["supervisor"];
-   //  registrarcolaborador($dni, $nombre, $apellido, $cargo, $usuario, $sede, $puesto, $area, $departamento, $supervisor);
-=======
-    //  registrarcolaborador($dni, $nombre, $apellido, $cargo, $usuario, $sede, $puesto, $area);
->>>>>>> 561d7a8a3ea516e12b0af64b939d31f0152894d0
+    $cargo = $_POST["idcargo"];
+    $usuario = $_POST["idusuario"];
+    $sede = $_POST["idsede"];
+    $puesto = $_POST["idpuesto"];
+    $area = $_POST["idarea"];
+    $departamento = $_POST["iddepartamento"];
+    $supervisor = $_POST["idsupervisor"];
+    $result = createColaborador($dni, $nombres,  $apellidos, $usuario, $cargo,  $sede, $puesto, $area, $departamento, $supervisor);
+
+    if ($result === true) {
+        $_SESSION['alert_type'] = 'success';
+        $_SESSION['alert_message'] = "Colaborador <strong>$nombres</strong> creado exitosamente.";
+    } else {
+        $_SESSION['alert_type'] = 'danger';
+        $_SESSION['alert_message'] = $result;
+    }
+    header('Location: ../colaborador.php');
 }
 
-//SI ELMETODO ES PUT
-if ($_SERVER["REQUEST_METHOD"] == "PUT") {
-    $id = $_PUT["id"];
-    $dni = $_PUT["dni"];
-    $nombre = $_PUT["nombre"];
-    $apellido = $_PUT["apellido"];
-    $cargo = $_PUT["cargo"];
-    $usuario = $_PUT["usuario"];
-    $sede = $_PUT["sede"];
-    $puesto = $_PUT["puesto"];
-    $area = $_PUT["area"];
-<<<<<<< HEAD
-    $departamento = $_PUT["departamento"];
-    $supervisor = $_PUT["supervisor"];
-   //  actualizarcolaborador($id, $dni, $nombre, $apellido, $cargo, $usuario, $sede, $puesto, $area, $departamento, $supervisor);
-=======
-    //  actualizarcolaborador($id, $dni, $nombre, $apellido, $cargo, $usuario, $sede, $puesto, $area);
->>>>>>> 561d7a8a3ea516e12b0af64b939d31f0152894d0
+
+
+
+function createColaborador($dni, $nombres, $apellidos, $usuario, $cargo, $sede, $puesto, $area, $departamento, $supervisor)
+{
+    // Conectar a la base de datos
+    $conexion = connectToDatabase();
+
+    // Verificar si el colabordaor ya existe por su dni
+    $query_check = "SELECT id FROM colaborador WHERE dni = '$dni'";
+    $result_check = $conexion->query($query_check);
+
+    if ($result_check->num_rows > 0) {
+        // Usuario ya existe, retornar un mensaje de error
+        return "Ya existe un colaborador con el dni <strong>$dni</strong>.";
+    } else {
+        // Usuario no existe, proceder con la inserción
+        $query_insert = "INSERT INTO `colaborador` (`dni`, `nombres`, `apellidos`, `idusuario`, `idcargo`, `idsede`, `idpuesto`, `idarea`, `iddepartamento`, `idsupervisor`) VALUES
+        ('$dni', '$nombres', '$apellidos', $usuario, $cargo, $sede, $puesto, $area, $departamento, $supervisor)";
+
+        if ($conexion) {
+            // Ejecutar la consulta
+            if ($conexion->query($query_insert) === TRUE) {
+                return true; // Indicar éxito
+            } else {
+                return false; // Indicar error
+            }
+            // Cerrar la conexión
+            $conexion->close();
+        }
+    }
 }
