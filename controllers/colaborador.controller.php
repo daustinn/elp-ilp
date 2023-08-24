@@ -60,3 +60,33 @@ function createColaborador($dni, $nombres, $apellidos, $usuario, $cargo, $sede, 
         }
     }
 }
+
+
+function updateColaborador($id, $nuevoDni, $nuevaNombres ,$nuevaApellidos, $nuevaIdusuario , $nuevaIdcargo , $nuevaIDsede , $nuevaIdpuesto , $nuevaIdarea , $nuevaIddepartamento,$nuevaIdsupervisor )
+{
+    // Conectar a la base de datos
+    $conexion = connectToDatabase();
+
+    // Verificar si el colaborador ya existe por su ID
+    $query_check = "SELECT id FROM colaborador WHERE id = '$id'";
+    $result_check = $conexion->query($query_check);
+
+    if ($result_check->num_rows === 0) {
+        // colaborador no existe, retornar un mensaje de error
+        return "El colaborador con el ID <strong>$id</strong> no existe.";
+    } else {
+        // Rol existe, proceder con la actualización
+        $query_update = "UPDATE colaborador SET dni = '$nuevoDni',  nombre = ' $nuevaNombres',apellidos = ' $nuevaApellidos', idusuario = ' $nuevaIdusuario', idcargo = ' $nuevaIdcargo ', idsede = ' $nuevaIDsede', idpuesto = '$nuevaIdpuesto ', idarea = '$nuevaIdarea ', iddepartameto = ' $nuevaIddepartamento' idsupervisor= ' $nuevaIdsupervisor' WHERE id = '$id'";
+        if ($conexion) {
+            // Ejecutar la consulta
+            if ($conexion->query($query_update) === TRUE) {
+                return true; // Indicar éxito
+            } else {
+                return false; // Indicar error
+            }
+            // Cerrar la conexión
+            $conexion->close();
+        }
+    }
+}
+

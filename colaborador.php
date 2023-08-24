@@ -237,6 +237,9 @@ $puestos = getPuestos()
                                 $fechaFormateada = $fechaDateTime->format('d \d\e F \d\e Y');
                                 echo $fechaFormateada
                                 ?></td>
+                                <td>
+                                <a class="btn btn-primary" href="colaborador-edicion.php?id=<?php echo $colaborador['id']; ?>">Editar</a>
+                            </td>
                         </tr>
                     <?php } ?>
                 <?php } else { ?>
